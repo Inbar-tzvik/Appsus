@@ -2,7 +2,8 @@ import { utilService } from "../../../services/util-service.js";
 import { storageService } from "../../../services/async-storage-service.js";
 
 export const noteService = {
-    getNotes
+    getNotes,
+    addNote
 }
 
 const NOTES_KEY = 'NOTES'
@@ -14,15 +15,20 @@ function getNotes(){
                     return _createNotes();
                 } 
                 else return res; 
-            })
-    
+            })   
+}
+
+function addNote(noteData){
+    const note = _createNote(noteData.type, false, {txt: noteData.content})
+    return storageService.post(NOTES_KEY, note)
+            .then(note => note)
 }
 
 function _createNotes(){
     const notes = [];
-    notes.push(_createNote('note-txt', false, {txt:'Note'}));
-    notes.push(_createNote('note-txt', false, {txt:'Note'}));
-    notes.push(_createNote('note-txt', false, {txt:'Note'}));
+    notes.push(_createNote('note-txt', false, {txt:'Note Text'}));
+    notes.push(_createNote('note-txt', false, {txt:'What am I writing here'}));
+    notes.push(_createNote('note-txt', false, {txt:'Programming is like sex'}));
     return Promise.resolve(notes)
 
 }

@@ -5,3 +5,4 @@
 /* COMPONENTS */
 @import 'components/main-header-footer.css';
 @import 'components/main-app-page.css';
+@import 'apps/note/note-styles.css';
