@@ -3,3 +3,5 @@
 
 @import 'components/main-header-footer.css';
 @import 'components/main-app-page.css';
+
+@import 'apps/email/email-styles.css';
