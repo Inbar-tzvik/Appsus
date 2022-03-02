@@ -1,7 +1,7 @@
 export default {
     props: ['info'],
     template: `
-    <div class="note-card">
+    <div>
         <h1>{{info.txt}}</h1>
     </div>
     `

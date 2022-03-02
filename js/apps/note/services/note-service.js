@@ -3,7 +3,8 @@ import { storageService } from "../../../services/async-storage-service.js";
 
 export const noteService = {
     getNotes,
-    addNote
+    addNote,
+    removeNote
 }
 
 const NOTES_KEY = 'NOTES'
@@ -19,9 +20,14 @@ function getNotes(){
 }
 
 function addNote(noteData){
-    const note = _createNote(noteData.type, false, {txt: noteData.content})
+    console.log(noteData);
+    const note = _createNote(noteData.type, false, noteData.info)
     return storageService.post(NOTES_KEY, note)
             .then(note => note)
+}
+
+function removeNote(id){
+    return storageService.remove(NOTES_KEY, id)
 }
 
 function _createNotes(){

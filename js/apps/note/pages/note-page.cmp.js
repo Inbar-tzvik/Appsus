@@ -6,7 +6,7 @@ export default {
   template: `
         <section class="notes-main app-main">
             <note-add @note-add="addNote"/>          
-            <note-preview :notes="notes"/>
+            <note-preview @note-remove="removeNote" :notes="notes"/>
         </section>
     `,
   components: {
@@ -30,6 +30,10 @@ export default {
     addNote(note){
       noteService.addNote(note)
         .then(() => this.loadNotes())
+    },
+    removeNote(id){
+      noteService.removeNote(id)
+      .then(()=>this.loadNotes());
     }
   },
 

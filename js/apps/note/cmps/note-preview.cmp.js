@@ -7,7 +7,10 @@ export default {
     props: ['notes'],
     template: `
     <section v-if="notes" class="notes-preview-container">
-            <component v-for="note in notes" :is="note.type" :info="note.info">
+            <div v-for="note in notes" class="note-card">
+                <button @click="onRemoveNote(note.id)">X</button>
+                <component :is="note.type" :info="note.info">
+            </div>
     </section>
     `,
     components:{
@@ -16,10 +19,11 @@ export default {
         noteVideo,
         noteTodos
     },
-    watch: {
-        notes(newNotes){
-            console.log(newNotes);
+    methods:{
+        onRemoveNote(id){
+            this.$emit('note-remove', id);
         }
     }
+   
 
 }
