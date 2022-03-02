@@ -1,16 +1,25 @@
-// import { eventBus } from '../services/eventBus-service.js'
+import {noteService} from '../services/note-service.js';
+import notePreview from '../cmps/note-preview.cmp.js';
 
 export default {
   template: `
-        <section class="about-page app-main">
-            <h3>This is an about page</h3>
-            <button @click="callBus">Call the bus</button>
+        <section v-if="notes" class="notes-main app-main">
+           <note-preview :notes="notes"/>
         </section>
     `,
+    components: {
+      notePreview
+    }, 
+    data(){
+      return{ 
+        notes: null
+      }
+    },
+    created(){
+      noteService.getNotes()
+        .then(notes => this.notes = notes);
+    },
   methods: {
-    // callBus(){
-    //     console.log('Calling bus!');
-    //     eventBus.emit('test','test data')
-    // }
+  
   },
 };
