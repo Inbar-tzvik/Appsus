@@ -1,7 +1,10 @@
+/* BASE */
 @import 'base/base.css';
 @import 'base/vars.css';
 
+/* COMPONENTS */
 @import 'components/main-header-footer.css';
 @import 'components/main-app-page.css';
 
 @import 'apps/email/email-styles.css';
+@import 'apps/note/note-styles.css';
