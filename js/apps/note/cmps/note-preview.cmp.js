@@ -7,8 +7,9 @@ export default {
     props: ['notes'],
     template: `
     <section v-if="notes" class="notes-preview-container">
-            <div v-for="note in notes" class="note-card">
+            <div v-for="note in notes" :key="note.id" class="note-card">
                 <button @click="onRemoveNote(note.id)">X</button>
+                <button @click="onPinNote(note.id)">pin</button>
                 <component :is="note.type" :info="note.info"/>
             </div>
     </section>
@@ -22,6 +23,9 @@ export default {
     methods: {
         onRemoveNote(id) {
             this.$emit('note-remove', id);
+        },
+        onPinNote(id){
+            
         }
     }
 
