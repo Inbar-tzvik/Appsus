@@ -1,5 +1,5 @@
-.email-list {
-  list-style: none;
+* {
+  box-sizing: border-box;
 }
 
 .email-preview {
@@ -30,4 +30,8 @@ tr {
 
 .email-data {
   font-weight: bold;
+}
+
+tr:hover {
+  background-color: #ddd;
 }

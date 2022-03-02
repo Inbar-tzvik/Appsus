@@ -12,7 +12,7 @@ export default {
   <email-menu @filtered="setFilterStatus"/>
   </section>
   <section class="email-app app-main">
-  <email-list :emails="emailsForDisplay"  />
+  <email-list :emails="emailsForDisplay"  @remove="removeEmail"  />
 </section>
 </section>
     `,
@@ -46,6 +46,20 @@ export default {
     setFilterTxt(txt) {
       this.filterBy.txt = txt;
       emailService.query(this.filterBy).then((emails) => (this.emails = emails));
+    },
+
+    removeEmail(id) {
+      emailService
+        .remove(id)
+        .then(() => {
+          const idx = this.emails.findIndex((email) => email.id === id);
+          this.emails.splice(idx, 1);
+          // eventBus.emit('show-msg', { txt: 'Deleted succesfully', type: 'success' });
+        })
+        .catch((err) => {
+          console.error(err);
+          // eventBus.emit('show-msg', { txt: 'Error - please try again later', type: 'error' });
+        });
     },
   },
   computed: {

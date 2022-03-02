@@ -3,14 +3,14 @@ import emailPreview from './email-preview.cmp.js';
 export default {
   props: ['emails'],
   template: `
-        <section>
+        
         <table>
-            <tr v-for="email in emails" :key="email.id" class="email-list">
-              <email-preview :email="email"></email-preview>
+            <tr v-for="email in emails" :key="email.id" class="email-list"  >
+              <email-preview :email="email"  @remove="remove"></email-preview>
            </tr>
         </table> 
-        </section>
     `,
+
   components: {
     emailPreview,
   },
@@ -24,3 +24,11 @@ export default {
   },
   computed: {},
 };
+
+{
+  /* <table>
+<tr v-for="email in emails" :key="email.id" class="email-list">
+  <email-preview   :email="email" @mouseleave="hideButtons" @mouseover="showButtons" :buttons="buttons" @remove="remove"></email-preview>
+</tr>
+</table>  */
+}
