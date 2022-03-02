@@ -4,16 +4,30 @@
 
 .email-preview {
   display: flex;
-  justify-content: space-around;
 }
 
 .email-main-layout {
   display: flex;
-  margin: 0 auto;
-  margin-right: 1.6rem;
-  margin-left: 1.6rem;
+  /* margin: 0 auto; */
+  /* margin-right: 1.6rem; */
+  /* margin-left: 1.6rem; */
 }
 
-.read-more {
-  display: inline;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+td {
+  text-align: left;
+  padding: 8px;
+  /* width: 150px; */
+}
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.email-data {
+  font-weight: bold;
 }

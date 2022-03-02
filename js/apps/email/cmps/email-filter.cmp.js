@@ -1,25 +1,23 @@
 export default {
   template: `
-        <section class="car-filter">
+        <section class="email-filter">
             <label>
             Search
-            <input ref="vendorInput" @input="setFilter" type="text" v-model="filterBy.vendor" placeholder="Search...">
+            <input ref="vendorInput" @input="setFilterTxt" type="text" v-model="txt" placeholder="Search...">
             </label>
         </section>
     `,
   data() {
     return {
-      filterBy: {
-        vendor: '',
-      },
+      txt: '',
     };
   },
   mounted() {
     // this.$refs.vendorInput.focus()
   },
   methods: {
-    // setFilter() {
-    //     this.$emit('filtered', {...this.filterBy});
-    // }
+    setFilterTxt() {
+      this.$emit('filteredTxt', this.txt);
+    },
   },
 };
