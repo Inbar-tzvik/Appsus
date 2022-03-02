@@ -16,5 +16,10 @@ export default {
         noteVideo,
         noteTodos
     },
+    watch: {
+        notes(newNotes){
+            console.log(newNotes);
+        }
+    }
 
 }

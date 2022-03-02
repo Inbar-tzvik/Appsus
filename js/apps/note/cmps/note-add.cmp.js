@@ -3,7 +3,7 @@ export default {
     <div class="note-add">
         <input type="text" :placeholder="noteTypeStr" v-model="noteContent">
         <div class="note-add-buttons">
-            <button @click="setNoteType('note-text')">text</button>
+            <button @click="setNoteType('note-txt')">text</button>
             <button @click="setNoteType('note-image')">image</button>
             <button @click="setNoteType('note-video')">video</button>
             <button @click="setNoteType('note-todo')">todo</button>
@@ -22,7 +22,7 @@ export default {
             this.noteType = type
         },
         onAddNote(){
-            if(!this.noteType) this.noteType = 'note-text'
+            if(!this.noteType) this.noteType = 'note-txt'
             this.$emit('note-add', {type: this.noteType, content: this.noteContent});
         }
     },
