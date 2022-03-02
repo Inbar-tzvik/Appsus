@@ -23,7 +23,7 @@ const emails = [
   {
     id: 'e103',
     subject: 'Khole is prgo again!',
-    body: 'Would love to catch up sometimes',
+    body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: false,
     sentAt: 1551133930594,
     to: 'momo@momo.com',

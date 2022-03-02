@@ -1,0 +1,19 @@
+.email-list {
+  list-style: none;
+}
+
+.email-preview {
+  display: flex;
+  justify-content: space-around;
+}
+
+.email-main-layout {
+  display: flex;
+  margin: 0 auto;
+  margin-right: 1.6rem;
+  margin-left: 1.6rem;
+}
+
+.read-more {
+  display: inline;
+}
