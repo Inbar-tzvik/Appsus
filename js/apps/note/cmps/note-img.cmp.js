@@ -4,6 +4,5 @@ export default {
     <div>
         <img :src="info.url" alt="">
     </div>
-    
     `
 }

@@ -1,3 +1,4 @@
  /* COMPONENTS */
+ @import 'components/note-add.css';
+ @import 'components/note-preview.css';
  @import 'components/note-card.css';
- 

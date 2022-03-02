@@ -1,39 +1,56 @@
 import { noteService } from '../services/note-service.js';
 import notePreview from '../cmps/note-preview.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
+import noteFilter from '../cmps/note-filter.cmp.js';
 
 export default {
   template: `
         <section class="notes-main app-main">
+            <note-filter @filter-set="setFilter"/>
             <note-add @note-add="addNote"/>          
             <note-preview @note-remove="removeNote" :notes="notes"/>
         </section>
     `,
   components: {
-    notePreview,
-    noteAdd
+    noteFilter,
+    noteAdd,
+    notePreview
   },
   data() {
     return {
-      notes: null
+      notes: null,
+      filter: null
     }
   },
   created() {
-    noteService.getNotes()
+    noteService.query()
       .then(notes => this.notes = notes);
   },
   methods: {
-    loadNotes(){
-      noteService.getNotes()
-      .then(notes => this.notes = notes);
+    loadNotes() {
+      noteService.query()
+        .then(notes => {
+          this.filterNotes(notes)
+        });
     },
-    addNote(note){
+    filterNotes(notes) {
+      if (!this.filter) this.notes = notes;
+      else {
+        console.log(this.filter);
+        this.notes = notes.filter(note => this.filter === note.type)
+      }
+    },
+    addNote(note) {
       noteService.addNote(note)
         .then(() => this.loadNotes())
     },
-    removeNote(id){
+    removeNote(id) {
       noteService.removeNote(id)
-      .then(()=>this.loadNotes());
+        .then(() => this.loadNotes());
+    },
+    setFilter(filter) {
+      this.filter = filter;
+      this.loadNotes();
     }
   },
 
