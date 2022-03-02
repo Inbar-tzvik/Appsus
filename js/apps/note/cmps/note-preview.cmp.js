@@ -9,21 +9,21 @@ export default {
     <section v-if="notes" class="notes-preview-container">
             <div v-for="note in notes" class="note-card">
                 <button @click="onRemoveNote(note.id)">X</button>
-                <component :is="note.type" :info="note.info">
+                <component :is="note.type" :info="note.info"/>
             </div>
     </section>
     `,
-    components:{
+    components: {
         noteTxt,
         noteImg,
         noteVideo,
         noteTodos
     },
-    methods:{
-        onRemoveNote(id){
+    methods: {
+        onRemoveNote(id) {
             this.$emit('note-remove', id);
         }
     }
-   
+
 
 }

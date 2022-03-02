@@ -1,0 +1,23 @@
+.note-add {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border:1px solid black;
+}
+
+.note-add input {
+    width: 800px;
+    height: 70px;
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.note-add-buttons>:last-child {
+    margin-inline-start: 20px;
+}
+
+.note-add-buttons button {
+    cursor: pointer;
+    margin-inline-start: 5px;
+}
