@@ -1,16 +1,23 @@
 // import { eventBus } from '../services/eventBus-service.js'
 import { emailService } from '../services/email-service.js';
 import emailList from '../cmps/email-list.cmp.js';
+import emailMenu from '../cmps/email-menu.cmp.js';
+
 export default {
   template: `
+  <section class="email-main-layout">
+  <section class="email-menu">
+  <email-menu />
+  </section>
   <section class="email-app app-main">
   <email-list :emails="emailsForDisplay"  />
 </section>
-      
+</section>
     `,
 
   components: {
     emailList,
+    emailMenu,
     // carEdit,
   },
   data() {
