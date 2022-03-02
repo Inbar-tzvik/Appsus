@@ -1,10 +1,10 @@
 export default {
   props: ['txt'],
   template: `
-  <section>
-   <p class="read-more"> {{displayTxt}}</p>
-   <span class="" v-if="isReadMore" @click="showLongText">{{show}}</span>
-   </section>
+  
+   <td class="read-more"> {{displayTxt}} <span class="" v-if="isReadMore" @click="showLongText">{{show}}</span></td>
+   
+   
 `,
   data() {
     return {
@@ -14,10 +14,8 @@ export default {
   computed: {
     displayTxt() {
       if (!this.isLongMode && this.txt.length > 100) {
-        console.log('big txt');
         return this.txt.slice(0, 40);
       } else {
-        console.log('short txt');
         return this.txt;
       }
     },
