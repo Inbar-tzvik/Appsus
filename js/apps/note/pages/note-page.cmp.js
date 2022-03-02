@@ -1,5 +1,5 @@
 import { noteService } from '../services/note-service.js';
-import notePreview from '../cmps/note-preview.cmp.js';
+import noteList from '../cmps/note-list.cmp.js';
 import noteAdd from '../cmps/note-add.cmp.js';
 import noteFilter from '../cmps/note-filter.cmp.js';
 
@@ -7,14 +7,17 @@ export default {
   template: `
         <section class="notes-main app-main">
             <note-filter @filter-set="setFilter"/>
-            <note-add @note-add="addNote"/>          
-            <note-preview @note-remove="removeNote" :notes="notes"/>
+            <note-add @note-add="addNote"/>   
+            <div v-if="notes">
+              <note-list @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+              <note-list @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
+            </div>
         </section>
     `,
   components: {
     noteFilter,
     noteAdd,
-    notePreview
+    noteList
   },
   data() {
     return {
@@ -48,10 +51,21 @@ export default {
       noteService.removeNote(id)
         .then(() => this.loadNotes());
     },
+    pinNote(id){
+      noteService.pinNote(id)
+        .then(() => this.loadNotes())
+    },
     setFilter(filter) {
       this.filter = filter;
       this.loadNotes();
     }
   },
-
+  computed :{
+    regularNotes(){
+      return this.notes.filter(note => !note.isPinned);
+    },
+    pinnedNotes(){
+      return this.notes.filter(note => note.isPinned);
+    }
+  }
 };

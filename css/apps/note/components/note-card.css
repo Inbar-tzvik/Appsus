@@ -1,5 +1,5 @@
 .note-card {
-    max-height: 400px;
+    margin-bottom: 20px;
     border: 1px solid black;
     text-align: center;
     break-inside: avoid;

@@ -6,10 +6,10 @@ import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['notes'],
     template: `
-    <section v-if="notes" class="notes-preview-container">
+    <section v-if="notes" class="notes-list">
             <div v-for="note in notes" :key="note.id" class="note-card">
                 <button @click="onRemoveNote(note.id)">X</button>
-                <button @click="onPinNote(note.id)">pin</button>
+                <button @click="onPinNote(note.id)">{{isPinned}}</button>
                 <component :is="note.type" :info="note.info"/>
             </div>
     </section>
@@ -25,7 +25,13 @@ export default {
             this.$emit('note-remove', id);
         },
         onPinNote(id){
-            
+            this.$emit('note-pin', id)
+        }
+    },
+    computed:{
+        isPinned(){
+            if(this.notes[0].isPinned) return 'Unpin';
+            else return 'Pin'
         }
     }
 

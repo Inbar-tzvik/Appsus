@@ -4,7 +4,8 @@ import { storageService } from "../../../services/async-storage-service.js";
 export const noteService = {
     query,
     addNote,
-    removeNote
+    removeNote,
+    pinNote
 }
 
 const NOTES_KEY = 'NOTES'
@@ -17,6 +18,16 @@ function query(){
                 } 
                 else return res; 
             })   
+}
+
+function pinNote(id){
+   return query()
+        .then(notes => {
+            const noteToPin = notes.find(note => note.id === id);
+            noteToPin.isPinned = !noteToPin.isPinned; 
+            console.log(noteToPin.isPinned);
+            return storageService.put(NOTES_KEY, noteToPin)
+        })
 }
 
 function addNote(noteData){
