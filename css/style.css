@@ -1,3 +1,5 @@
-* {
-  box-sizing: border-box;
-}
+@import 'base/base.css';
+@import 'base/vars.css';
+
+@import 'components/main-header-footer.css';
+@import 'components/main-app-page.css';

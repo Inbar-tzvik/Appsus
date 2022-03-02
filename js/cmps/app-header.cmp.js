@@ -4,10 +4,10 @@ export default {
             <div class="logo">
                 <h3>Appsus</h3>
             </div>
-            <nav class="nav-bar">
+            <nav class="main-header">
                 <router-link to="/">Home</router-link> |
                 <router-link to="/mail">Mail</router-link> |
-                <router-link to="/note">Notes</router-link>
+                <router-link to="/note">Notes</router-link> |
                 <router-link to="/book">Book</router-link>
 
             </nav>
