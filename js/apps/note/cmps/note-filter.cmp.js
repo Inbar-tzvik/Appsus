@@ -12,36 +12,20 @@ export default {
     `,
   data() {
     return {
-      filter: null,
+      filter: {
+        byType: null,
+        byLabel: null
+      },
       text: null
     }
   },
   methods: {
     onSetFilter(type) {
-      this.filter = type;
+      this.filter.byType = type;
       this.sendFilter()
     },
     onSetTextFilter(){
-      switch(this.text){
-        case 'text': 
-        case 'Text':
-          this.filter = 'note-txt'; 
-          break;
-        case 'image': 
-        case 'Image':
-          this.filter = 'note-img'; 
-          break;
-        case 'video': 
-        case 'Video':
-          this.filter = 'note-video'; 
-          break;
-        case 'todos': 
-        case 'Todos':
-          this.filter = 'note-todos'; 
-          break;
-        default: 
-        this.filter = null;
-      }
+      this.filter.byLabel = this.text;
       this.sendFilter();
     },
     sendFilter() {

@@ -40,7 +40,7 @@ function pinNote(id){
 }
 
 function addNote(noteData){
-    const note = _createNote(noteData.type, false, noteData.info)
+    const note = _createNote(noteData, false)
     return storageService.post(NOTES_KEY, note);
           
 }
@@ -51,18 +51,20 @@ function removeNote(id){
 
 function _createNotes(){
     const notes = [];
-    notes.push(_createNote('note-txt', false, {txt:'Note Text'}));
-    notes.push(_createNote('note-txt', false, {txt:'What am I writing here'}));
-    notes.push(_createNote('note-txt', false, {txt:'Programming is like sex'}));
-    return Promise.resolve(notes)
+    notes.push(_createNote({label: 'Note', type: 'note-txt', info: {txt:'This is a note'}}, false));
+    notes.push(_createNote({label: 'Note', type: 'note-txt', info: {txt:'This is a note'}}, false));
+    notes.push(_createNote({label: 'Note', type: 'note-txt', info: {txt:'This is a note'}}, false));
+    return storageService.postMany(NOTES_KEY, notes);
+    
 
 }
 
-function _createNote(type, isPinned, info){
+function _createNote(note, isPinned){
     return {
         id: utilService.makeId,
-        type,
+        label: note.label,
+        type: note.type,
         isPinned,
-        info
+        info: note.info
     }
 }

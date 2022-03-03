@@ -7,12 +7,14 @@ export default {
     props: ['note'],
     template: `
     <div :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
-        <div v-if="isHover">
-        <button @click="onRemoveNote">X</button>
-        <button @click="onPinNote">{{isPinned}}</button>
+        <div :style="{visibility: isHover ? 'visible' : 'hidden' }">
+            <button @click="onRemoveNote">X</button>
+            <button @click="onPinNote">{{isPinned}}</button>
+            <button @click="onDuplicateNote">Duplicate</button>
         </div>
+        <h3>{{note.label}}</h3>
         <component :is="note.type" :info="note.info"/>
-        <input v-if="isHover" type="color" v-model="bcgToSet" @input="onSetBcg">
+        <input :style="{visibility: isHover ? 'visible' : 'hidden' }" type="color" v-model="bcgToSet" @input="onSetBcg">
     </div>
     `,
     components: {
@@ -33,6 +35,9 @@ export default {
         onPinNote(){
             this.$emit('note-pin', this.note.id)
         },
+        onDuplicateNote(){
+            this.$emit('note-duplicate', this.note)
+        },
         toggleHover(isHover){
             this.isHover = isHover
         },
@@ -50,5 +55,5 @@ export default {
             if(!this.note.style) return 'white';
             else return this.note.style.bcg
         }
-    }
+    },
 }

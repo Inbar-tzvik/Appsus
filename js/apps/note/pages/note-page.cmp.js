@@ -9,8 +9,8 @@ export default {
             <note-filter @filter-set="setFilter"/>
             <note-add @note-add="addNote"/>   
             <div v-if="notes">
-              <note-list @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
-              <note-list @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
+              <note-list @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+              <note-list @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
             </div>
         </section>
     `,
@@ -37,10 +37,19 @@ export default {
         });
     },
     filterNotes(notes) {
-      if (!this.filter) this.notes = notes;
+      if (!this.filter || !this.filter.byLabel && !this.filter.byType ) this.notes = notes;
       else {
-        console.log(this.filter);
-        this.notes = notes.filter(note => this.filter === note.type)
+        if (this.filter.byType) {
+          this.notes = notes.filter(note => note.type === this.filter.byType);
+          if (this.filter.byLabel) {
+            const regex = new RegExp(this.filter.byLabel, 'i');
+            this.notes = this.notes.filter(note => (regex.test(note.label)));
+          }
+        }
+        if (this.filter.byLabel) {
+          const regex = new RegExp(this.filter.byLabel, 'i');
+          this.notes = notes.filter(note => (regex.test(note.label)));
+        }
       }
     },
     addNote(note) {
@@ -51,7 +60,7 @@ export default {
       noteService.removeNote(id)
         .then(() => this.loadNotes());
     },
-    pinNote(id){
+    pinNote(id) {
       noteService.pinNote(id)
         .then(() => this.loadNotes())
     },
@@ -59,16 +68,16 @@ export default {
       this.filter = filter;
       this.loadNotes();
     },
-    setNoteBcg(note){
+    setNoteBcg(note) {
       noteService.setNoteBcg(note)
         .then(() => this.loadNotes());
     }
   },
-  computed :{
-    regularNotes(){
+  computed: {
+    regularNotes() {
       return this.notes.filter(note => !note.isPinned);
     },
-    pinnedNotes(){
+    pinnedNotes() {
       return this.notes.filter(note => note.isPinned);
     }
   }
