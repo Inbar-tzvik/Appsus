@@ -29,7 +29,7 @@ export default {
       filterBy: {
         status: 'inbox',
         txt: '', // no need to support complex text search
-        isReadnow: 1, // (optional property, if missing: show all)
+        isReadnow: '1', // (optional property, if missing: show all)
         // isStared: true, // (optional property, if missing: show all)
         // lables: ['important', 'romantic'], // has any of the labels
       },

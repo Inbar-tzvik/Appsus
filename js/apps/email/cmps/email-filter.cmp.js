@@ -18,7 +18,7 @@ export default {
     return {
       filter: {
         txt: '',
-        isRead: '',
+        isRead: '1',
       },
     };
   },

@@ -53,7 +53,7 @@ export const emailService = {
   get,
   getEmptyEmail,
 };
-
+// function update(put(entityType, updatedEntity)
 function query(filter) {
   return storageService.query(EMAIL_KEY).then((emails) => filterby(emails, filter));
 }
@@ -67,7 +67,7 @@ function filterby(emails, filter) {
   }
   var emailsBeforeFil = emails;
   console.log(filter.status);
-  if (filter.isReadnow === 1) {
+  if (filter.isReadnow === '1') {
     if (filter.status === 'inbox') {
       var result = emailsBeforeFil.filter((email, indx) => {
         return (
@@ -83,24 +83,26 @@ function filterby(emails, filter) {
         );
       });
     }
-  } else if (filter.status === true || filter.status === false) {
+  } else {
     if (filter.status === 'inbox') {
       var result = emailsBeforeFil.filter((email, indx) => {
+        console.log(`${email.isRead}` === filter.isReadnow);
         return (
           loggedinUser.email === email.to &&
-          email.isRead === filter.isReadnow &&
-          (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
-        );
-      });
-    } else if (filter.status === 'sent') {
-      var result = emailsBeforeFil.filter((email) => {
-        return (
-          loggedinUser.email !== email.to &&
-          email.isRead === filter.isReadnow &&
+          filter.isReadnow === `${email.isRead}` &&
           (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
         );
       });
     }
+    //  else if (filter.status === 'sent') {
+    //   var result = emailsBeforeFil.filter((email) => {
+    //     return (
+    //       loggedinUser.email !== email.to &&
+    //       filter.isReadnow === `${email.isRead}` &&
+    //       (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+    //     );
+    //   });
+    // }
   }
   console.log(result);
   return result;
