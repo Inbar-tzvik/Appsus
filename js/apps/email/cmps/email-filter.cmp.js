@@ -3,22 +3,32 @@ export default {
         <section class="email-filter">
             <label>
             Search
-            <input ref="vendorInput" @input="setFilterTxt" type="text" v-model="txt" placeholder="Search...">
+            <input ref="vendorInput" v-model="filter.txt"
+            @input="setFilterTxtRead" type="text" v-model="txt" placeholder="Search...">
             </label>
-            <datalist>
+            <select v-model="filter.isRead" @change="setFilterTxtRead">
+                <option value=1>All</option>
+                <option value="true">Read</option>
+                <option value="false">Unread</option>
+             </select>
         </section>
+        <pre>{{filter}}</pre>
     `,
   data() {
     return {
-      txt: '',
+      filter: {
+        txt: '',
+        isRead: '',
+      },
     };
   },
-  mounted() {
-    // this.$refs.vendorInput.focus()
-  },
+
   methods: {
-    setFilterTxt() {
-      this.$emit('filteredTxt', this.txt);
+    value() {
+      console.log(ev.selecte);
+    },
+    setFilterTxtRead() {
+      this.$emit('filteredTxtRead', this.filter);
     },
   },
 };

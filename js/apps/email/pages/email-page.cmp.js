@@ -7,15 +7,15 @@ export default {
   template: `
   <section class="email-main-layout">
   <section class="email-menu">
-  <email-filter @filteredTxt="setFilterTxt" />
-
+  <email-filter @filteredTxtRead="setFilterTxtRead" />
   <email-menu @filtered="setFilterStatus"/>
   </section>
   <section class="email-app app-main">
   <email-list :emails="emailsForDisplay"  @remove="removeEmail"  />
 </section>
+<pre>{{filterBy}}</pre> 
 </section>
-    `,
+`,
 
   components: {
     emailList,
@@ -29,7 +29,7 @@ export default {
       filterBy: {
         status: 'inbox',
         txt: '', // no need to support complex text search
-        // isRead: true, // (optional property, if missing: show all)
+        isReadnow: 1, // (optional property, if missing: show all)
         // isStared: true, // (optional property, if missing: show all)
         // lables: ['important', 'romantic'], // has any of the labels
       },
@@ -39,12 +39,13 @@ export default {
     emailService.query(this.filterBy).then((emails) => (this.emails = emails));
   },
   methods: {
-    setFilterStatus(filterBy) {
-      this.filterBy.status = filterBy;
+    setFilterStatus(filterStat) {
+      this.filterBy.status = filterStat;
       emailService.query(this.filterBy).then((emails) => (this.emails = emails));
     },
-    setFilterTxt(txt) {
-      this.filterBy.txt = txt;
+    setFilterTxtRead(filter) {
+      this.filterBy.txt = filter.txt;
+      this.filterBy.isReadnow = filter.isRead;
       emailService.query(this.filterBy).then((emails) => (this.emails = emails));
     },
 

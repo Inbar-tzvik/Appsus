@@ -19,8 +19,11 @@ export default {
   },
   created() {
     const id = this.$route.params.emailId;
-    console.log(id);
-    emailService.get(id).then((email) => (this.email = email));
+    emailService.get(id).then((email) => {
+      this.email = email;
+      this.email.isRead = true;
+      console.log(email);
+    });
   },
   computed: {
     // carImgUrl() {

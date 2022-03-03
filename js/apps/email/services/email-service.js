@@ -26,7 +26,7 @@ const emails = [
   },
   {
     id: 'e103',
-    subject: 'Khole is prgo again!',
+    subject: 'Khole is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: false,
     sentAt: 1551234564,
@@ -60,26 +60,47 @@ function query(filter) {
 
 function filterby(emails, filter) {
   if (filter.txt) {
+    // email.isRead === filter.isReadnow &&
     var regex = new RegExp(filter.txt, 'i');
   } else {
     var regex = new RegExp('', 'i');
   }
   var emailsBeforeFil = emails;
   console.log(filter.status);
-  if (filter.status === 'inbox') {
-    var result = emailsBeforeFil.filter((email, indx) => {
-      return (
-        loggedinUser.email === email.to &&
-        (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
-      );
-    });
-  } else if (filter.status === 'sent') {
-    var result = emailsBeforeFil.filter((email) => {
-      return (
-        loggedinUser.email !== email.to &&
-        (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
-      );
-    });
+  if (filter.isReadnow === 1) {
+    if (filter.status === 'inbox') {
+      var result = emailsBeforeFil.filter((email, indx) => {
+        return (
+          loggedinUser.email === email.to &&
+          (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+        );
+      });
+    } else if (filter.status === 'sent') {
+      var result = emailsBeforeFil.filter((email) => {
+        return (
+          loggedinUser.email !== email.to &&
+          (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+        );
+      });
+    }
+  } else if (filter.status === true || filter.status === false) {
+    if (filter.status === 'inbox') {
+      var result = emailsBeforeFil.filter((email, indx) => {
+        return (
+          loggedinUser.email === email.to &&
+          email.isRead === filter.isReadnow &&
+          (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+        );
+      });
+    } else if (filter.status === 'sent') {
+      var result = emailsBeforeFil.filter((email) => {
+        return (
+          loggedinUser.email !== email.to &&
+          email.isRead === filter.isReadnow &&
+          (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+        );
+      });
+    }
   }
   console.log(result);
   return result;
