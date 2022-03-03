@@ -5,7 +5,7 @@ import noteFilter from '../cmps/note-filter.cmp.js';
 
 export default {
   template: `
-        <section @click="isBodyFocus = true" class="notes-main app-main">
+        <section class="notes-main app-main">
             <note-filter @filter-set="setFilter"/>
             <note-add :isBodyFocus="isBodyFocus" @note-add="addNote"/>   
             <div class="note-lists-container" v-if="notes">
@@ -22,8 +22,7 @@ export default {
   data() {
     return {
       notes: null,
-      filter: null,
-      isBodyFocus: false
+      filter: null
     }
   },
   created() {
