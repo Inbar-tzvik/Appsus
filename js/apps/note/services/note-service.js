@@ -25,7 +25,6 @@ function pinNote(id){
         .then(notes => {
             const noteToPin = notes.find(note => note.id === id);
             noteToPin.isPinned = !noteToPin.isPinned; 
-            console.log(noteToPin.isPinned);
             return storageService.put(NOTES_KEY, noteToPin)
         })
 }
