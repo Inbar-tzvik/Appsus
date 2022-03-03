@@ -6,17 +6,20 @@ import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['note'],
     template: `
-    <div class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
-    <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-circle-xmark"></i></button>     
+    <div @click="isColorOptions = false" class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
+         <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-circle-xmark"></i></button>     
         <h3>{{note.label}}</h3>
         <component :is="note.type" :info="note.info"/>
         <div class="note-preview-edit">
             <button @click="onPinNote"><i :class="isPinned"></i></button>
             <button @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
-            <div class="color-input-container">
-                <label for="color-input"><i class="fa-solid fa-palette"></i></label>
-                <input id="color-input" type="color" v-model="bcgToSet" @input="onSetBcg">
+            <div v-if="isColorOptions" class="color-options">
+                <button class="red-btn" @click="isColorOptions=false" @click="onSetBcg('red')"></button> 
+                <button class="blue-btn" @click="isColorOptions=false" @click="onSetBcg('blue')"></button> 
+                <button class="grey-btn" @click="isColorOptions=false" @click="onSetBcg('grey')"></button> 
+                <button class="aqua-btn" @click="isColorOptions=false" @click="onSetBcg('aqua')"></button> 
             </div>
+            <button @click.stop="isColorOptions=true"><i class="fa-solid fa-palette"></i></button>
         </div>
     </div>
     `,
@@ -29,7 +32,7 @@ export default {
     data() {
         return {
             isHover: false,
-            bcgToSet: null
+            isColorOptions: false
         }
     },
     methods: {
@@ -45,9 +48,8 @@ export default {
         toggleHover(isHover) {
             this.isHover = isHover
         },
-        onSetBcg() {
-            console.log(this.bcgToSet);
-            this.$emit('note-bcg-change', { id: this.note.id, color: this.bcgToSet })
+        onSetBcg(bcg) {
+            this.$emit('note-bcg-change', { id: this.note.id, color: bcg })
         }
     },
     computed: {

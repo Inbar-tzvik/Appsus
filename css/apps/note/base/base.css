@@ -1,3 +1,10 @@
+.notes-main{
+    display: flex; 
+    flex-direction: column;
+    height: 100vh;
+    padding: 10px;
+}
+
 .notes-main h1{
     margin: 0;
 }
@@ -5,3 +12,5 @@
 .notes-main button{
     cursor: pointer;
 }
+
+

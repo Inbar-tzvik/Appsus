@@ -22,6 +22,7 @@ function query(){
 }
 
 function setNoteBcg({id, color}){
+    console.log(color);
     return query()
             .then(notes=> {
                 const noteToColor = notes.find(note => note.id === id);

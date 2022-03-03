@@ -5,11 +5,11 @@ import noteFilter from '../cmps/note-filter.cmp.js';
 
 export default {
   template: `
-        <section class="notes-main app-main">
+        <section @click="isBodyFocus = true" class="notes-main app-main">
             <note-filter @filter-set="setFilter"/>
-            <note-add @note-add="addNote"/>   
-            <div v-if="notes">
-              <note-list @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+            <note-add :isBodyFocus="isBodyFocus" @note-add="addNote"/>   
+            <div class="note-lists-container" v-if="notes">
+              <note-list v-if="pinnedNotes.length" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
               <note-list @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
             </div>
         </section>
@@ -22,7 +22,8 @@ export default {
   data() {
     return {
       notes: null,
-      filter: null
+      filter: null,
+      isBodyFocus: false
     }
   },
   created() {
