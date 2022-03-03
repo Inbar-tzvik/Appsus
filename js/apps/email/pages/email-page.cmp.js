@@ -8,12 +8,11 @@ export default {
   <section class="email-main-layout">
   <section class="email-menu">
   <email-filter @filteredTxtRead="setFilterTxtRead" />
-  <email-menu @filtered="setFilterStatus"/>
+  <email-menu :emails="emailsForDisplay" @filtered="setFilterStatus"/>
   </section>
   <section class="email-app app-main">
-  <email-list :emails="emailsForDisplay"  @remove="removeEmail"  />
+  <email-list :emails="emailsForDisplay"  @remove="removeEmail"/>
 </section>
-<pre>{{filterBy}}</pre> 
 </section>
 `,
 

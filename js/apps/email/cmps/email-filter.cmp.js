@@ -12,7 +12,7 @@ export default {
                 <option value="false">Unread</option>
              </select>
         </section>
-        <pre>{{filter}}</pre>
+      
     `,
   data() {
     return {

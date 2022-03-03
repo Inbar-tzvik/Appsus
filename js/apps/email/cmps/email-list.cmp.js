@@ -4,11 +4,13 @@ export default {
   props: ['emails'],
   template: `
         
-        <table>
-            <tr v-for="email in emails" :key="email.id" class="email-list"  >
+      <section class="email-list">
+        <ul>
+              <li v-for="email in emails" :key="email.id"   >
               <email-preview :email="email"  @remove="remove"></email-preview>
-           </tr>
-        </table> 
+               </li>
+        </ul>
+        </section> 
     `,
 
   components: {

@@ -2,7 +2,7 @@ export default {
   props: ['txt'],
   template: `
   
-   <td class="read-more"> {{displayTxt}} <span class="" v-if="isReadMore" @click="showLongText">{{show}}</span></td>
+   <span class="read-more"> {{displayTxt}} <span class="" v-if="isReadMore" @click="showLongText">{{show}}</span></span>
    
    
 `,

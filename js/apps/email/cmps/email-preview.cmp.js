@@ -3,16 +3,20 @@ import readMore from './email-readMore.cmp.js';
 export default {
   props: ['email'],
   template: `
-       <div @mouseleave="hideButtons" @mouseover="showButtons"  @click="showAll">
-         <td class="email-data"> {{email.from.name}} </td>
-         <td class="email-data"> {{email.subject}} - </td>
-          <read-more v-bind:txt="email.body"> </read-more>
-          </div>
-          <section @mouseleave="hideButtons" @mouseover="showButtons">
-          <td v-if="!buttons" class="email-data">{{dateCalc}} </td>
-         <td v-if="buttons" @click="remove(email.id)"> X</td>    
-         </section>
-
+  <section class="email-all" >
+       <section class="email-preview-row " @mouseleave="hideButtons" @mouseover="showButtons"  @click="showAll">
+          <span class="sendfrom" v-bind:class="{'email-data':!email.isRead}"> {{email.from.name}} </span>
+        <span class="mail-content">
+          <span  v-bind:class="{'email-data':!email.isRead}"> {{email.subject}} - </span>
+          <span> {{email.body}}</span>
+          <!-- <read-more v-bind:txt="email.body"> </read-more> -->
+        </span>
+        </section>
+         <span @mouseleave="hideButtons" @mouseover="showButtons">
+             <span v-if="!buttons" v-bind:class="{'email-data':!email.isRead}">{{dateCalc}} </span>
+             <span v-if="buttons" @click="remove(email.id)"> X</span>    
+</span>
+</section>
     `,
   data() {
     return {
