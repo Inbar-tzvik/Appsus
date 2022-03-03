@@ -2,12 +2,11 @@ import { emailService } from '../services/email-service.js';
 
 export default {
   template: `
-        <section v-if="car" class="car-details app-main">
-            <h4>Car details</h4>
-            <img :src="carImgUrl">
-            <p>Vendor:{{car.vendor}}</p>
-            <p>Max speed:{{car.maxSpeed}}</p>
-            <router-link to="/car">Back to cars</router-link>
+        <section v-if="email" class="email-details app-main">
+            <h2>{{email.subject}}</h2>
+            <h4>{{email.from.name}} - </h4><span> < {{email.from.email}} ></span>
+            <p>{{email.body}}</p>
+            <router-link to="/email">Back to emails</router-link>
         </section>
         <section v-else class="loading">
 
@@ -15,16 +14,17 @@ export default {
     `,
   data() {
     return {
-      car: null,
+      email: null,
     };
   },
   created() {
-    const id = this.$route.params.carId;
-    carService.get(id).then((car) => (this.car = car));
+    const id = this.$route.params.emailId;
+    console.log(id);
+    emailService.get(id).then((email) => (this.email = email));
   },
   computed: {
-    carImgUrl() {
-      return `img/${this.car.vendor}.png`;
-    },
+    // carImgUrl() {
+    //   return `img/${this.car.vendor}.png`;
+    // },
   },
 };

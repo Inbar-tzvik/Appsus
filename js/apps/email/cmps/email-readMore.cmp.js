@@ -13,8 +13,8 @@ export default {
   },
   computed: {
     displayTxt() {
-      if (!this.isLongMode && this.txt.length > 100) {
-        return this.txt.slice(0, 40);
+      if (!this.isLongMode && this.txt.length > 40) {
+        return this.txt.slice(0, 35);
       } else {
         return this.txt;
       }
