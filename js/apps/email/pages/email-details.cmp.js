@@ -9,7 +9,6 @@ export default {
             <router-link to="/email">Back to emails</router-link>
         </section>
         <section v-else class="loading">
-
         </section>
     `,
   data() {
@@ -22,7 +21,7 @@ export default {
     emailService.get(id).then((email) => {
       this.email = email;
       this.email.isRead = true;
-
+      emailService.update(this.email);
       console.log(email);
     });
   },

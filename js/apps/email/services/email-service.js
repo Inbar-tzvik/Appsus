@@ -52,8 +52,11 @@ export const emailService = {
   save,
   get,
   getEmptyEmail,
+  update,
 };
-// function update(put(entityType, updatedEntity)
+function update(updatedEntity) {
+  storageService.put(EMAIL_KEY, updatedEntity);
+}
 function query(filter) {
   return storageService.query(EMAIL_KEY).then((emails) => filterby(emails, filter));
 }
