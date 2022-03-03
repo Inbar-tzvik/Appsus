@@ -1,4 +1,5 @@
 export default {
+    props: ['isBodyFocus'],
     template: `
     <section class="note-add">
         <div class="note-content-inputs">
@@ -22,7 +23,6 @@ export default {
                 type: 'note-txt',
                 info: null
             },
-            isInputFocus: false
         }
     },
     methods: {
@@ -52,6 +52,9 @@ export default {
             else if (this.note.type === 'note-img') return 'Enter Image URL Here';
             else if (this.note.type === 'note-video') return 'Enter Video URL Here';
             else return 'Enter Todo List Items Here';
+        },
+        isInputFocus(){
+            return !this.isBodyFocus
         }
     }
 }

@@ -21,7 +21,7 @@
 
 .filter-type-inputs {
     width: fit-content;
-    margin-top: 10px;
+    margin: 10px auto 0;
     background: #454857;
     padding: 4px;
     border-radius: 3px;
