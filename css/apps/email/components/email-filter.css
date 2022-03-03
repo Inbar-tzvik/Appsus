@@ -1,6 +1,6 @@
-body {
+/* body {
   background-color: #aec4dda8;
-}
+} */
 
 .email-filter {
   display: flex;
@@ -18,7 +18,7 @@ body {
 }
 
 .search {
-  background-color: white;
+  background-color: rgba(119, 169, 226, 0.527);
   height: 40px;
 }
 
