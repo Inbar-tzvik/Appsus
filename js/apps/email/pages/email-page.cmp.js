@@ -5,15 +5,15 @@ import emailMenu from '../cmps/email-menu.cmp.js';
 import emailFilter from '../cmps/email-filter.cmp.js';
 export default {
   template: `
-  <section class="email-main-layout">
-  <section class="email-menu">
-  <email-filter @filteredTxtRead="setFilterTxtRead" />
-  <email-menu :emails="emailsForDisplay" @filtered="setFilterStatus"/>
-  </section>
-  <section class="email-app app-main">
-  <email-list :emails="emailsForDisplay"  @remove="removeEmail"/>
+  <section >
+    <email-filter @filteredTxtRead="setFilterTxtRead" />
+    <section class="email-main-layout">
+    <email-menu class="email-menu" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
+  <!-- <section class="email-app app-main"> -->
+    <email-list :emails="emailsForDisplay"  @remove="removeEmail"/>
+<!-- </section> -->
 </section>
-</section>
+<section>
 `,
 
   components: {

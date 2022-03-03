@@ -1,0 +1,27 @@
+body {
+  background-color: #aec4dda8;
+}
+
+.email-filter {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.email-filter input {
+  /* height: 40px; */
+  width: 200px;
+  border: none;
+}
+
+.email-filter select {
+  height: 40px;
+}
+
+.search {
+  background-color: white;
+  height: 40px;
+}
+
+.fas {
+  margin: auto;
+}
