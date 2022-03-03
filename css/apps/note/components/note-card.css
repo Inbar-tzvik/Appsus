@@ -1,7 +1,9 @@
 .note-card {
+    min-width: 300px;
     border-radius: 5px;
     text-align: center;
     -webkit-column-break-inside: avoid;
+    display:inline-block;
     border: 1px solid rgb(202, 198, 198);
     position: relative;
     margin: 0 0 4em;
