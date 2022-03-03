@@ -6,7 +6,7 @@ import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['note'],
     template: `
-    <div :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
+    <div class="note-card-content" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
         <div :style="{visibility: isHover ? 'visible' : 'hidden' }">
             <button @click="onRemoveNote">X</button>
             <button @click="onPinNote">{{isPinned}}</button>

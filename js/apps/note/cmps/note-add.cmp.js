@@ -2,20 +2,16 @@ export default {
     template: `
     <section class="note-add">
         <div class="note-content-inputs">
-            <input v-if="isInputFocus"  type="text" placeholder="Enter Label Here" v-model="note.label">
-            <input @focus="isInputFocus=true" type="text" :placeholder="noteTypeStr" v-model="noteContent">
+            <input v-if="isInputFocus"  type="text" placeholder="Enter Label Here" v-model="note.label"/>
+            <input @focus="isInputFocus=true" type="text" :placeholder="noteTypeStr" v-model="noteContent"/>
         </div>
         <div class="note-type-inputs">
-            <input type="radio" name="set-type" @input="setNoteType('note-txt')" id="text-input">
-            <label name="set-type" for="text-input">Text</label>
-            <input name="set-type" type="radio" @input="setNoteType('note-img')" id="img-input">
-            <label name="set-type" for="img-input">Image</label>
-            <input name="set-type" type="radio" @input="setNoteType('note-video')" id="video-input">
-            <label name="set-type" for="video-input">Video</label>
-            <input name="set-type" type="radio" @input="setNoteType('note-todos')" id="todos-input">
-            <label name="set-type" for="todos-input">Todo</label>
-            <button @click="onAddNote()">Add Note</button>
+            <input label="Text"  name="set-type" type="radio" @input="setNoteType('note-txt')" />
+            <input label="Image" name="set-type" type="radio" @input="setNoteType('note-img')" />
+            <input label="Video" name="set-type" type="radio" @input="setNoteType('note-video')" />
+            <input label="Todos" name="set-type" type="radio" @input="setNoteType('note-todos')" />
         </div>
+        <button @click="onAddNote()">Add Note</button>
     </section>
     `,
     data() {
@@ -48,14 +44,14 @@ export default {
                     todos: todoItems
                 }
             }
-        },
-        computed: {
-            noteTypeStr() {
-                if (this.note.type === "note-txt" || !this.note.type) return 'Enter Text Here';
-                else if (this.note.type === "note-img") return 'Enter Image URL Here';
-                else if (this.note.type === "note-video") return 'Enter Video URL Here';
-                else 'Enter Todo List Items Here';
-            },
-        },
+        }
+    },
+    computed: {
+        noteTypeStr() {
+            if (this.note.type === 'note-txt' || !this.note.type) return 'Enter Text Here';
+            else if (this.note.type === 'note-img') return 'Enter Image URL Here';
+            else if (this.note.type === 'note-video') return 'Enter Video URL Here';
+            else return 'Enter Todo List Items Here';
+        }
     }
 }

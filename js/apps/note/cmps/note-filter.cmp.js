@@ -2,11 +2,15 @@ export default {
   template: `
         <section class="note-filter">
             <input type="text" v-model="text" @input="onSetTextFilter">
-            <div class="filter-buttons">
-              <button @click="onSetFilter('note-txt')">text</button>
+            <div class="filter-type-inputs">
+              <!-- <button @click="onSetFilter('note-txt')">text</button>
               <button @click="onSetFilter('note-img')">image</button>
               <button @click="onSetFilter('note-video')">video</button>
-              <button @click="onSetFilter('note-todos')">todo</button>
+              <button @click="onSetFilter('note-todos')">todo</button> -->
+              <input label="Text" name="set-type" type="radio" @input="onSetFilter('note-txt')" >
+              <input label="Image" name="set-type" type="radio" @input="onSetFilter('note-img')" >
+              <input label="Video" name="set-type" type="radio" @input="onSetFilter('note-video')" >
+              <input label="Todos" name="set-type" type="radio" @input="onSetFilter('note-todos')" >
             </div>
         </section>
     `,
