@@ -13,14 +13,14 @@ export default {
   },
   computed: {
     displayTxt() {
-      if (!this.isLongMode && this.txt.length > 40) {
-        return this.txt.slice(0, 35);
+      if (!this.isLongMode && this.txt.length > 30) {
+        return this.txt.slice(0, 32);
       } else {
         return this.txt;
       }
     },
     isReadMore() {
-      return this.txt.length > 100 ? true : false;
+      return this.txt.length > 30 ? true : false;
     },
     show() {
       return !this.isLongMode ? '...' : '';

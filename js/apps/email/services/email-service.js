@@ -68,11 +68,17 @@ function filterby(emails, filter) {
   console.log(filter.status);
   if (filter.status === 'inbox') {
     var result = emailsBeforeFil.filter((email, indx) => {
-      return loggedinUser.email === email.to && regex.test(email.subject);
+      return (
+        loggedinUser.email === email.to &&
+        (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+      );
     });
   } else if (filter.status === 'sent') {
     var result = emailsBeforeFil.filter((email) => {
-      return loggedinUser.email !== email.to && regex.test(email.subject);
+      return (
+        loggedinUser.email !== email.to &&
+        (regex.test(email.subject) || regex.test(email.from.name) || regex.test(email.body))
+      );
     });
   }
   console.log(result);
@@ -88,8 +94,14 @@ function get(emailId) {
 }
 
 function save(email) {
-  if (email.id) return storageService.put(EMAIL_KEY, email);
-  else return storageService.post(EMAIL_KEY, email);
+  // if (email.id) return storageService.put(EMAIL_KEY, email);
+  // else {
+  // email.id = utilService.makeId();
+  email.from.name = loggedinUser.fullname;
+  email.from.email = loggedinUser.email;
+  email.sentAt = new Date().getTime() / 1000;
+  return storageService.post(EMAIL_KEY, email);
+  // }
 }
 
 function getEmptyEmail() {
@@ -100,6 +112,7 @@ function getEmptyEmail() {
     isRead: false,
     sentAt: '',
     to: '',
+    from: { name: '', email: '' },
   };
 }
 

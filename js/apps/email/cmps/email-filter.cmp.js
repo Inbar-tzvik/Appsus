@@ -5,6 +5,7 @@ export default {
             Search
             <input ref="vendorInput" @input="setFilterTxt" type="text" v-model="txt" placeholder="Search...">
             </label>
+            <datalist>
         </section>
     `,
   data() {

@@ -7,10 +7,12 @@ export default {
          <td class="email-data"> {{email.from.name}} </td>
          <td class="email-data"> {{email.subject}} - </td>
           <read-more v-bind:txt="email.body"> </read-more>
-         <td v-if="!buttons" class="email-data">{{dateCalc}} </td>
-         <td v-if="buttons" @click="remove(email.id)"> X</td>
-         
-         </div>
+          </div>
+          <section @mouseleave="hideButtons" @mouseover="showButtons">
+          <td v-if="!buttons" class="email-data">{{dateCalc}} </td>
+         <td v-if="buttons" @click="remove(email.id)"> X</td>    
+         </section>
+
     `,
   data() {
     return {
@@ -41,7 +43,7 @@ export default {
   computed: {
     dateCalc() {
       var t = new Date(this.email.sentAt * 1000); // Epoch
-      var date = t.getDate() + '/' + t.getMonth() + '/' + t.getFullYear();
+      var date = t.getDate() + '/' + (t.getMonth() + 1) + '/' + t.getFullYear();
       return date;
     },
   },

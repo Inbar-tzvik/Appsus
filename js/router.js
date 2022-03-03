@@ -3,6 +3,8 @@ import emailPage from './apps/email/pages/email-page.cmp.js';
 import notePage from './apps/note/pages/note-page.cmp.js';
 import bookPage from './apps/book/pages/book-page.cmp.js';
 import emailDetails from './apps/email/pages/email-details.cmp.js';
+import emailCompose from './apps/email/pages/email-compose.cmp.js';
+
 const routes = [
   {
     path: '/',
@@ -15,6 +17,10 @@ const routes = [
   {
     path: '/email/:emailId',
     component: emailDetails,
+  },
+  {
+    path: '/email/compose',
+    component: emailCompose,
   },
   {
     path: '/note',
