@@ -2,4 +2,6 @@
     margin: 10px 50px 0;
     height: 100%;
     columns: 300px;
+    column-gap: 80px;
+
 }

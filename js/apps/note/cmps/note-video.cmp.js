@@ -2,7 +2,7 @@ export default {
     props: ['info'],
     template: `
     <div>
-        <iframe :src="videoUrl" width="80%" height="300px"></iframe>
+        <iframe :src="videoUrl" width="100%" height="300px"></iframe>
     </div>
     `,
     computed: {
