@@ -1,6 +1,6 @@
 export default {
   template: `
-        <section class="filter">
+        <section class="note-filter">
             <input type="text" v-model="text" @input="onSetTextFilter">
             <div class="filter-buttons">
               <button @click="onSetFilter('note-txt')">text</button>

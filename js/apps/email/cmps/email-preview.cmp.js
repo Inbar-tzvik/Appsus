@@ -7,9 +7,8 @@ export default {
          <td class="email-data"> {{email.from.name}} </td>
          <td class="email-data"> {{email.subject}} - </td>
           <read-more v-bind:txt="email.body"> </read-more>
-         <td v-if="!buttons" class="email-data">{{dateCalc}} </td>
-         <td v-if="buttons" @click="remove(email.id)"> X</td>
-         
+          <td v-if="!buttons" class="email-data">{{dateCalc}} </td>
+          <td  v-if="buttons" @click="remove(email.id)"> X</td>
          </div>
     `,
   data() {
@@ -21,7 +20,7 @@ export default {
   components: {
     readMore,
   },
-  created() {},
+  created() { },
   methods: {
     showAll() {
       this.$router.push(`/email/${this.email.id}`);

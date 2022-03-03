@@ -1,24 +1,19 @@
-import noteTxt from "./note-txt.cmp.js";
-import noteImg from './note-img.cmp.js';
-import noteVideo from './note-video.cmp.js';
-import noteTodos from './note-todos.cmp.js';
 
+import notePreview from "./note-preview.cmp.js";
 export default {
     props: ['notes'],
     template: `
     <section v-if="notes" class="notes-list">
             <div v-for="note in notes" :key="note.id" class="note-card">
-                <button @click="onRemoveNote(note.id)">X</button>
-                <button @click="onPinNote(note.id)">{{isPinned}}</button>
-                <component :is="note.type" :info="note.info"/>
+                <note-preview :note="note" @note-remove="onRemoveNote" @note-pin="onPinNote" @note-bcg-change="onSetBcg">
+
+                </note-preview>
             </div>
     </section>
     `,
+
     components: {
-        noteTxt,
-        noteImg,
-        noteVideo,
-        noteTodos
+        notePreview
     },
     methods: {
         onRemoveNote(id) {
@@ -26,14 +21,12 @@ export default {
         },
         onPinNote(id){
             this.$emit('note-pin', id)
+        },
+        onSetBcg(note){
+            this.$emit('note-bcg-change', note)
         }
     },
-    computed:{
-        isPinned(){
-            if(this.notes[0].isPinned) return 'Unpin';
-            else return 'Pin'
-        }
-    }
+   
 
 
 }

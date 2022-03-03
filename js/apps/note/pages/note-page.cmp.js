@@ -9,8 +9,8 @@ export default {
             <note-filter @filter-set="setFilter"/>
             <note-add @note-add="addNote"/>   
             <div v-if="notes">
-              <note-list @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
-              <note-list @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
+              <note-list @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+              <note-list @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
             </div>
         </section>
     `,
@@ -33,7 +33,7 @@ export default {
     loadNotes() {
       noteService.query()
         .then(notes => {
-          this.filterNotes(notes)
+          this.filterNotes(notes);
         });
     },
     filterNotes(notes) {
@@ -58,6 +58,10 @@ export default {
     setFilter(filter) {
       this.filter = filter;
       this.loadNotes();
+    },
+    setNoteBcg(note){
+      noteService.setNoteBcg(note)
+        .then(() => this.loadNotes());
     }
   },
   computed :{

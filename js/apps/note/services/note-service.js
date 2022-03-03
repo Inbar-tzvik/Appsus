@@ -5,7 +5,8 @@ export const noteService = {
     query,
     addNote,
     removeNote,
-    pinNote
+    pinNote,
+    setNoteBcg
 }
 
 const NOTES_KEY = 'NOTES'
@@ -18,6 +19,15 @@ function query(){
                 } 
                 else return res; 
             })   
+}
+
+function setNoteBcg({id, color}){
+    return query()
+            .then(notes=> {
+                const noteToColor = notes.find(note => note.id === id);
+                noteToColor.style = {bcg: color};
+                return storageService.put(NOTES_KEY, noteToColor)
+            })
 }
 
 function pinNote(id){
