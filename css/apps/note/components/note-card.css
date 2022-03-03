@@ -10,7 +10,7 @@
     transition: transform 0.3s
 }
 
-.note-card:hover{
+.note-card:hover {
     transform-origin: top center;
     transform: scale(1.1);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1)
@@ -21,7 +21,7 @@
     height: 80%;
 }
 
-.note-card-content>button {
+.note-delete {
     font-size: 1.5rem;
     border: none;
     background-color: transparent;
@@ -29,6 +29,13 @@
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+
+    transition: opacity 0.3s;
+}
+
+.card-hover .note-delete{
+    opacity: 1;
 }
 
 .note-card-content>button:hover {
@@ -46,9 +53,16 @@
     align-items: center;
 }
 
+
 .note-preview-edit {
     display: flex;
     justify-content: space-around;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card-hover .note-preview-edit {
+    opacity: 1;
 }
 
 .note-preview-edit button {
@@ -57,11 +71,11 @@
     border: 1px solid transparent;
     border-radius: 50%;
     outline: none;
-    cursor: pointer;   
-    background-color: transparent; 
+    cursor: pointer;
+    background-color: transparent;
 }
 
-.note-preview-edit button:hover{
+.note-preview-edit button:hover {
     background-color: rgb(207, 205, 205);
 }
 
@@ -69,12 +83,12 @@
     visibility: hidden;
 }
 
-.color-input-container{
-    display:flex;
+.color-input-container {
+    display: flex;
     justify-content: flex-start;
 }
 
-.color-input-container label{
+.color-input-container label {
     font-size: 1.2rem;
 
 }

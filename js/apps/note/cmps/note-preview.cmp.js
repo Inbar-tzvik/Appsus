@@ -6,11 +6,11 @@ import noteTodos from './note-todos.cmp.js';
 export default {
     props: ['note'],
     template: `
-    <div class="note-card-content" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
-    <button :style="{visibility: isHover ? 'visible' : 'hidden' }" @click="onRemoveNote"><i class="fa-solid fa-circle-xmark"></i></button>     
+    <div class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
+    <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-circle-xmark"></i></button>     
         <h3>{{note.label}}</h3>
         <component :is="note.type" :info="note.info"/>
-        <div :style="{visibility: isHover ? 'visible' : 'hidden' }" class="note-preview-edit">
+        <div class="note-preview-edit">
             <button @click="onPinNote"><i :class="isPinned"></i></button>
             <button @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
             <div class="color-input-container">
