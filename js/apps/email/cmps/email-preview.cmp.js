@@ -3,20 +3,17 @@ import readMore from './email-readMore.cmp.js';
 export default {
   props: ['email'],
   template: `
-  <section class="email-all" >
-       <section class="email-preview-row " @mouseleave="hideButtons" @mouseover="showButtons"  @click="showAll">
-          <span class="sendfrom" v-bind:class="{'email-data':!email.isRead}"> {{email.from.name}} </span>
-        <span class="mail-content">
-          <span  v-bind:class="{'email-data':!email.isRead}"> {{email.subject}} - </span>
-          <span> {{email.body}}</span>
+  <!-- <section class="email-all" > -->
+       <section v-bind:class="{'email-read':email.isRead}" class="email-preview-row email-all" @mouseleave="hideButtons" @mouseover="showButtons"  >
+          <span  @click="showAll" class="sendfrom" > {{email.from.name}} </span>
+          <span  @click="showAll" class="mail-content" > {{email.subject}} - 
+          <span @click="showAll"> {{displayTxt}}</span></span>
           <!-- <read-more v-bind:txt="email.body"> </read-more> -->
-        </span>
-        </section>
-         <span @mouseleave="hideButtons" @mouseover="showButtons">
-             <span v-if="!buttons" v-bind:class="{'email-data':!email.isRead}">{{dateCalc}} </span>
-             <span v-if="buttons" @click="remove(email.id)"> X</span>    
-</span>
-</section>
+          <!-- <section  @mouseleave="hideButtons" @mouseover="showButtons"> -->
+            <span class="date-remove" v-if="!buttons" v-bind:class="{'email-data':!email.isRead }">{{dateCalc}} </span>
+            <span  class="date-remove"v-if="buttons" @click="remove(email.id)"> X</span>    
+          </section>
+<!-- </section> -->
     `,
   data() {
     return {
@@ -45,6 +42,13 @@ export default {
     },
   },
   computed: {
+    displayTxt() {
+      if (this.email.body.length > 100) {
+        return this.email.body.slice(0, 100);
+      } else {
+        return this.email.body;
+      }
+    },
     dateCalc() {
       var t = new Date(this.email.sentAt * 1000); // Epoch
       var date = t.getDate() + '/' + (t.getMonth() + 1) + '/' + t.getFullYear();
