@@ -2,10 +2,9 @@ export default {
     props: ['info'],
     template: `
     <div>
-        <h1>{{info.label}}</h1>
         <ul>
-            <li >
-
+            <li v-for="todo in info.todos">
+                {{todo.txt}}
             </li>
         </ul>
     </div>

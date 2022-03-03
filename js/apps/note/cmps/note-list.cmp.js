@@ -5,7 +5,7 @@ export default {
     template: `
     <section v-if="notes" class="notes-list">
             <div v-for="note in notes" :key="note.id" class="note-card">
-                <note-preview :note="note" @note-remove="onRemoveNote" @note-pin="onPinNote" @note-bcg-change="onSetBcg">
+                <note-preview @note-duplicate="onDuplicateNote" :note="note" @note-remove="onRemoveNote" @note-pin="onPinNote" @note-bcg-change="onSetBcg">
 
                 </note-preview>
             </div>
@@ -24,6 +24,10 @@ export default {
         },
         onSetBcg(note){
             this.$emit('note-bcg-change', note)
+        },
+        onDuplicateNote(note){
+            console.log(note);
+            this.$emit('note-duplicate', note)
         }
     },
    

@@ -1,3 +1,19 @@
 .note-filter{
-    
+    margin: 50px 10px;
+    width: fit-content;
+}
+
+.note-filter input{
+    width: 500px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 0 15px;
+}
+
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
 }
