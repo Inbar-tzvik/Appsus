@@ -7,11 +7,14 @@ export default {
   template: `
         <section class="notes-main app-main">
             <note-filter @filter-set="setFilter"/>
-            <note-add :isBodyFocus="isBodyFocus" @note-add="addNote"/>   
+            <note-add  @note-add="addNote"/>   
             <div class="note-lists-container" v-if="notes">
-              <note-list v-if="pinnedNotes.length" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
-              <note-list @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
+              <h1 v-if="pinnedNotes">Pinned:</h1>
+              <note-list @note-edit="editNote" v-if="pinnedNotes.length" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+              <h1 v-if="pinnedNotes">Others:</h1>
+              <note-list @note-edit="editNote" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
             </div>
+            <router-view @note-edited="loadNotes"></router-view>
         </section>
     `,
   components: {
@@ -71,6 +74,9 @@ export default {
     setNoteBcg(note) {
       noteService.setNoteBcg(note)
         .then(() => this.loadNotes());
+    },
+    editNote(id){
+      this.$router.push(`/note/${id}`)
     }
   },
   computed: {
@@ -78,7 +84,9 @@ export default {
       return this.notes.filter(note => !note.isPinned);
     },
     pinnedNotes() {
-      return this.notes.filter(note => note.isPinned);
+      const notes = this.notes.filter(note => note.isPinned);
+      if(!notes.length) return false;
+      else return notes 
     }
   }
 };

@@ -4,6 +4,7 @@ import notePage from './apps/note/pages/note-page.cmp.js';
 import bookPage from './apps/book/pages/book-page.cmp.js';
 import emailDetails from './apps/email/pages/email-details.cmp.js';
 import emailCompose from './apps/email/pages/email-compose.cmp.js';
+import noteEdit from './apps/note/cmps/note-edit.cmp.js';
 
 const routes = [
   {
@@ -25,6 +26,12 @@ const routes = [
   {
     path: '/note',
     component: notePage,
+    children: [
+      {
+        path: ':noteId',
+        component: noteEdit
+      }
+    ]
   },
   //   {
   //     path: '/car/:carId',

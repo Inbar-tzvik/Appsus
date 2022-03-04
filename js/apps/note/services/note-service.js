@@ -3,10 +3,12 @@ import { storageService } from "../../../services/async-storage-service.js";
 
 export const noteService = {
     query,
+    getNoteById,
     addNote,
     removeNote,
     pinNote,
-    setNoteBcg
+    setNoteBcg,
+    editNote
 }
 
 const NOTES_KEY = 'NOTES'
@@ -19,6 +21,10 @@ function query(){
                 } 
                 else return res; 
             })   
+}
+
+function getNoteById(id){
+    return storageService.get(NOTES_KEY, id);
 }
 
 function setNoteBcg({id, color}){
@@ -43,8 +49,11 @@ function pinNote(id){
 function addNote(noteData){
     console.log(noteData);
     const note = _createNote(noteData, false)
-    return storageService.post(NOTES_KEY, note);
-          
+    return storageService.post(NOTES_KEY, note);  
+}
+
+function editNote(note){
+    return storageService.put(NOTES_KEY, note)
 }
 
 function removeNote(id){
