@@ -1,3 +1,5 @@
+import {utilService} from '../../../services/util-service.js'
+
 export default {
     props: ['isBodyFocus'],
     template: `
@@ -5,6 +7,7 @@ export default {
         <div class="note-content-inputs">
             <input type="text" placeholder="Enter Label Here" v-model="note.label"/>
             <input type="text" :placeholder="noteTypeStr" v-model="noteContent"/>
+            <input v-if="note.info" v-for="todo in note.info.todos" type="text"  v-model="noteContent">
         </div>
         <div class="note-type-inputs">
             <input label="Text"  name="set-type" type="radio" @input="setNoteType('note-txt')" />
@@ -28,7 +31,7 @@ export default {
     methods: {
         setNoteType(type) {
             this.note.type = type;
-
+            this.setNoteInfo();
         },
         onAddNote() {
             this.setNoteInfo()
@@ -38,11 +41,15 @@ export default {
             if (this.note.type === 'note-txt') this.note.info = { txt: this.noteContent };
             else if (this.note.type === 'note-img' || this.note.type === "note-video") this.note.info = { url: this.noteContent };
             else if (this.note.type === 'note-todos') {
-                const todoStrings = this.noteContent.split(',');
-                const todoItems = todoStrings.map(item => ({ txt: item }))
-                this.note.info = {
-                    todos: todoItems
-                }
+                // const todoStrings = this.noteContent.split(',');
+                // const todoItems = todoStrings.map(item => ({ txt: item }))
+                // this.note.info = {
+                //     todos: todoItems
+                // }
+                // if(!this.notes.todos || !this.note.todos.length){
+                //     const todos = [{txt:"todo", id: utilService.makeId}];
+                //     this.note.todos.info = {todos: todos}
+                // }
             }
         }
     },
