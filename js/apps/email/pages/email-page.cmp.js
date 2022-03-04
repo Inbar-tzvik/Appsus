@@ -3,6 +3,7 @@ import { emailService } from '../services/email-service.js';
 import emailList from '../cmps/email-list.cmp.js';
 import emailMenu from '../cmps/email-menu.cmp.js';
 import emailFilter from '../cmps/email-filter.cmp.js';
+import emailDetails from './email-details.cmp.js';
 export default {
   template: `
   <section >
@@ -11,6 +12,7 @@ export default {
     <email-menu class="email-menu" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
   <!-- <section class="email-app app-main"> -->
     <email-list :emails="emailsForDisplay"  @remove="removeEmail"/>
+    <!-- <email-details>  -->
 <!-- </section> -->
 </section>
 <section>
@@ -20,6 +22,7 @@ export default {
     emailList,
     emailMenu,
     emailFilter,
+    emailDetails,
     // carEdit,
   },
   data() {

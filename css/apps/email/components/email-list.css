@@ -18,6 +18,7 @@
 .email-list {
   width: calc(100% - 250px);
   margin-right: 50px;
+  margin-top: 50px;
 }
 
 .email-list > ul {
@@ -51,15 +52,16 @@ form {
   position: relative;
   /* background: white; */
   display: flex;
-  /* font-weight: bold; */
   height: 50px;
   align-items: center;
   max-width: 100%;
   padding: 20px;
+  cursor: pointer;
 }
 .email-preview-row:hover {
-  border: 1px solid rgba(102, 99, 99, 0.657);
-  transform: scale(1.02);
+  /* border: 1px solid rgba(102, 99, 99, 0.657); */
+  transform: scale(1.01);
+  box-shadow: 1px 2px 2px 2px #999898a4;
 }
 .sendfrom {
   flex: 0 0 150px;
@@ -98,11 +100,54 @@ form {
 }
 
 .email-menu {
-  margin-left: 20px;
   font-family: Roboto;
-  font-size: 0.875rem;
+  font-size: 0.9rem;
 }
 
 .email-menu p:hover {
   background-color: #e8eaed;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.email-menu p {
+  padding-left: 25px;
+  padding-right: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  position: relative;
+}
+
+.email-menu p:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 35px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  z-index: 1;
+  left: 110%;
+  font-size: 10px;
+}
+
+.email-menu p:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.email-read-content {
+  font-family: Roboto-bold;
+}
+
+.fa-trash {
+  padding: 8px;
+}
+.fa-trash:hover {
+  background-color: #cfd3d8;
+  border-radius: 50%;
 }

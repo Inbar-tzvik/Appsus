@@ -34,18 +34,81 @@ select:focus {
   border-radius: 8px;
 }
 .fas {
-  padding: 4px;
+  padding: 8px;
+  opacity: 0.7;
 }
 .fas:hover {
-  background-color: #e8eaed;
-  /* opacity: 1; */
-
-  /* border-radius: 5%; */
+  background-color: #cfd3d8;
+  border-radius: 50%; /* opacity: 1; */
 }
-.fa-inbox.fa-star.fa-paper-plane {
-  opacity: 0.75;
-  color: rgba(0, 0, 0, 0.75); /* RGBA Color (Alternative Transparency) */
-  -webkit-filter: blur(2px); /* Blur */
-  -moz-filter: blur(2px);
-  filter: blur(2px);
+.fa-trash,
+.fa-inbox,
+.fa-star,
+.fa-paper-plane {
+  opacity: 0.7;
+  padding-right: 8px;
+  /* color: rgba(0, 0, 0, 0.75);  */
+  /* -webkit-filter: blur(2px);  */
+  /* -moz-filter: blur(2px);
+  filter: blur(2px);  */
+}
+
+.search {
+  /* padding: 6px; */
+  position: relative;
+}
+
+.search:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 35px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 0.3s ease-in-out;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: 105%;
+  font-size: 10px;
+}
+
+.search:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fa-plus {
+  background: -webkit-linear-gradient(rgb(225, 236, 73), rgb(240, 118, 118), rgb(90, 223, 50), rgb(73, 90, 236));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.email-menu div {
+  width: 8rem;
+  /* border: 0.01rem solid #3c404b; */
+  padding: 8px;
+  border-radius: 24px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  /* margin: auto; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 1px 3px 3px 3px #999898a4;
+  margin-left: 8px;
+}
+
+.email-menu div:hover {
+  box-shadow: 3px 4px 4px 5px #999898a4;
+  cursor: pointer;
+}
+
+.inbox-red {
+  background-color: #fce8e6;
+  border-radius: 8px;
+  color: #d93025;
 }

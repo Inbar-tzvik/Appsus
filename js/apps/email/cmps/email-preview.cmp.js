@@ -5,13 +5,13 @@ export default {
   template: `
   <!-- <section class="email-all" > -->
        <section v-bind:class="{'email-read':email.isRead}" class="email-preview-row email-all" @mouseleave="hideButtons" @mouseover="showButtons"  >
-          <span  @click="showAll" class="sendfrom" > {{email.from.name}} </span>
-          <span  @click="showAll" class="mail-content" > {{email.subject}} - 
+          <span  @click="showAll" class="sendfrom" v-bind:class="{'email-read-content':!email.isRead}"> {{email.from.name}} </span>
+          <span  @click="showAll" class="mail-content" > <span v-bind:class="{'email-read-content':!email.isRead}"> {{email.subject}} - </span>
           <span @click="showAll"> {{displayTxt}}</span></span>
           <!-- <read-more v-bind:txt="email.body"> </read-more> -->
           <!-- <section  @mouseleave="hideButtons" @mouseover="showButtons"> -->
             <span class="date-remove" v-if="!buttons" v-bind:class="{'email-data':!email.isRead }">{{dateCalc}} </span>
-            <span  class="date-remove"v-if="buttons" @click="remove(email.id)"> X</span>    
+            <span  class="date-remove"v-if="buttons" @click="remove(email.id)"> <i class="fa-solid fa-trash"></i></span>    
           </section>
 <!-- </section> -->
     `,
