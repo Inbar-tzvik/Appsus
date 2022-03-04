@@ -11,17 +11,41 @@
   /* height: 40px; */
   width: 200px;
   border: none;
+  background-color: #f1f3f4;
+  height: 40px;
 }
 
+input:focus {
+  outline: none;
+}
 .email-filter select {
   height: 40px;
+  border: none;
+  background-color: #f1f3f4;
+  border-radius: 8px;
 }
 
+select:focus {
+  outline: none;
+}
 .search {
-  background-color: rgba(119, 169, 226, 0.527);
+  background-color: #f1f3f4;
   height: 40px;
+  border-radius: 8px;
 }
-
 .fas {
-  margin: auto;
+  padding: 4px;
+}
+.fas:hover {
+  background-color: #e8eaed;
+  /* opacity: 1; */
+
+  /* border-radius: 5%; */
+}
+.fa-inbox.fa-star.fa-paper-plane {
+  opacity: 0.75;
+  color: rgba(0, 0, 0, 0.75); /* RGBA Color (Alternative Transparency) */
+  -webkit-filter: blur(2px); /* Blur */
+  -moz-filter: blur(2px);
+  filter: blur(2px);
 }

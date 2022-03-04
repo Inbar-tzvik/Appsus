@@ -1,6 +1,7 @@
 /* BASE */
 @import 'base/base.css';
 @import 'base/vars.css';
+@import 'base/typography.css';
 
 /* COMPONENTS */
 @import 'components/main-header-footer.css';

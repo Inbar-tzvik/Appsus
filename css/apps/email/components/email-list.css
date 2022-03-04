@@ -36,7 +36,7 @@
 } */
 
 .email-read {
-  background-color: rgba(238, 238, 238, 0.842);
+  background-color: #f1f3f4;
 }
 
 form {
@@ -46,6 +46,8 @@ form {
 }
 
 .email-preview-row {
+  font-family: Roboto;
+  font-size: 0.875rem;
   position: relative;
   /* background: white; */
   display: flex;
@@ -55,7 +57,10 @@ form {
   max-width: 100%;
   padding: 20px;
 }
-
+.email-preview-row:hover {
+  border: 1px solid rgba(102, 99, 99, 0.657);
+  transform: scale(1.02);
+}
 .sendfrom {
   flex: 0 0 150px;
   overflow: hidden;
@@ -94,4 +99,10 @@ form {
 
 .email-menu {
   margin-left: 20px;
+  font-family: Roboto;
+  font-size: 0.875rem;
+}
+
+.email-menu p:hover {
+  background-color: #e8eaed;
 }

@@ -3,9 +3,9 @@ export default {
   template: `
           <section class="email-menu">
           <h3 @click="compose">+ compose</h3>
-              <p @click="setFilter('inbox')">Inbox({{unreadEmails}})</p>
-              <p @click="setFilter('stared')" >Starred</p>
-              <p @click="setFilter('sent')" > Sent mail</p>
+              <p @click="setFilter('inbox')"> <i class="fa-solid fa-inbox"></i>   Inbox({{unreadEmails}})</p>
+              <p @click="setFilter('stared')" > <i class="fa-solid fa-star"></i>   Starred</p>
+              <p @click="setFilter('sent')" ><i class="fa-solid fa-paper-plane"></i>   Sent</p>
           </section>
       `,
   data() {
