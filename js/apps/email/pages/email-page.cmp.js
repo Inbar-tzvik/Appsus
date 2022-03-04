@@ -9,9 +9,11 @@ export default {
   <section >
     <email-filter @filteredTxtRead="setFilterTxtRead" />
     <section class="email-main-layout">
-    <email-menu class="email-menu" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
+    <email-menu  :mailOpen="isMailToShow" class="email-menu" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
   <!-- <section class="email-app app-main"> -->
-    <email-list :emails="emailsForDisplay"  @remove="removeEmail"/>
+    <email-list v-if="!isMailToShow" :emails="emailsForDisplay" @show="show"  @remove="removeEmail"/>
+    <router-view v-if="isMailToShow" :emailId="idToShow"  @edit-exit="editOff" ></router-view>
+
     <!-- <email-details>  -->
 <!-- </section> -->
 </section>
@@ -35,13 +37,26 @@ export default {
         // isStared: true, // (optional property, if missing: show all)
         // lables: ['important', 'romantic'], // has any of the labels
       },
+      isMailToShow: false,
+      idToShow: null,
     };
   },
   created() {
     emailService.query(this.filterBy).then((emails) => (this.emails = emails));
   },
   methods: {
+    show(id) {
+      this.isMailToShow = true;
+      this.idToShow = id;
+      this.$router.push(`/email/${id}`);
+
+      console.log(this.idToShow);
+    },
     setFilterStatus(filterStat) {
+      this.isMailToShow = false;
+      this.$router.push(`/email`);
+
+      console.log(this.isMailToShow);
       this.filterBy.status = filterStat;
       emailService.query(this.filterBy).then((emails) => (this.emails = emails));
     },

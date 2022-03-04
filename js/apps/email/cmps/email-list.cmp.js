@@ -6,8 +6,8 @@ export default {
         
       <section class="email-list">
         <ul>
-              <li v-for="email in emails" :key="email.id"   >
-              <email-preview :email="email"  @remove="remove"></email-preview>
+              <li v-for="email in emails" :key="email.id"  >
+              <email-preview :email="email"  @remove="remove" @show="show" ></email-preview>
                </li>
         </ul>
         </section> 
@@ -17,6 +17,10 @@ export default {
     emailPreview,
   },
   methods: {
+    show(id) {
+      this.$emit('show', id);
+      console.log('my id is', id);
+    },
     remove(id) {
       this.$emit('remove', id);
     },

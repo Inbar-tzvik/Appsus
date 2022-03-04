@@ -3,7 +3,7 @@ export default {
   template: `
           <section class="email-menu">
           <div @click="compose"><i class="fa-solid fa-plus fa-2x"></i> compose</div>
-              <p v-bind:class="{'inbox-red':inboxRed}" data-hover="Inbox" @click="setFilter('inbox')"> <i class="fa-solid fa-inbox"></i> Inbox ({{unreadEmails}})</p>
+              <p v-bind:class="{'inbox-red':inboxRed}" data-hover="Inbox" @click="setFilter('inbox')" to="/email"> <i class="fa-solid fa-inbox"></i> Inbox ({{unreadEmails}})</p>
               <p data-hover="Starred" @click="setFilter('stared')" > <i class="fa-solid fa-star"></i>   Starred</p>
               <p data-hover="Sent" @click="setFilter('sent')" ><i class="fa-solid fa-paper-plane"></i>   Sent</p>
           </section>

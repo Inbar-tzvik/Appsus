@@ -5,7 +5,9 @@
 .email-filter {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
   margin-top: 10px;
+  /* border-bottom: 1px solid rgb(190, 189, 189); */
 }
 .email-filter input {
   /* height: 40px; */
@@ -32,6 +34,8 @@ select:focus {
   background-color: #f1f3f4;
   height: 40px;
   border-radius: 8px;
+  position: relative;
+  margin-bottom: 10px;
 }
 .fas {
   padding: 8px;
@@ -51,11 +55,6 @@ select:focus {
   /* -webkit-filter: blur(2px);  */
   /* -moz-filter: blur(2px);
   filter: blur(2px);  */
-}
-
-.search {
-  /* padding: 6px; */
-  position: relative;
 }
 
 .search:before {

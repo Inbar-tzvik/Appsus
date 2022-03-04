@@ -18,7 +18,7 @@
 .email-list {
   width: calc(100% - 250px);
   margin-right: 50px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .email-list > ul {
@@ -144,10 +144,18 @@ form {
   font-family: Roboto-bold;
 }
 
-.fa-trash {
+.fa-trash,
+.fa-envelope,
+.fa-envelope-open {
   padding: 8px;
 }
 .fa-trash:hover {
+  background-color: #cfd3d8;
+  border-radius: 50%;
+}
+
+.fa-envelope:hover,
+.fa-envelope-open:hover {
   background-color: #cfd3d8;
   border-radius: 50%;
 }

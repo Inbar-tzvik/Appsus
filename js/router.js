@@ -14,11 +14,14 @@ const routes = [
   {
     path: '/email',
     component: emailPage,
+    children: [
+      {
+        path: ':emailId',
+        component: emailDetails,
+      },
+    ],
   },
-  {
-    path: '/email/:emailId',
-    component: emailDetails,
-  },
+
   {
     path: '/email/compose',
     component: emailCompose,
@@ -29,9 +32,9 @@ const routes = [
     children: [
       {
         path: ':noteId',
-        component: noteEdit
-      }
-    ]
+        component: noteEdit,
+      },
+    ],
   },
   //   {
   //     path: '/car/:carId',
