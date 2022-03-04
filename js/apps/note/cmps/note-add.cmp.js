@@ -1,4 +1,3 @@
-import {utilService} from '../../../services/util-service.js'
 
 export default {
     props: ['isBodyFocus'],
@@ -7,7 +6,6 @@ export default {
         <div class="note-content-inputs">
             <input type="text" placeholder="Enter Label Here" v-model="note.label"/>
             <input type="text" :placeholder="noteTypeStr" v-model="noteContent"/>
-            <input v-if="note.info" v-for="todo in note.info.todos" type="text"  v-model="noteContent">
         </div>
         <div class="note-type-inputs">
             <input label="Text"  name="set-type" type="radio" @input="setNoteType('note-txt')" />
@@ -15,7 +13,7 @@ export default {
             <input label="Video" name="set-type" type="radio" @input="setNoteType('note-video')" />
             <input label="Todos" name="set-type" type="radio" @input="setNoteType('note-todos')" />
         </div>
-        <button @click="onAddNote()">Add Note</button>
+        <button @click="onAddNote">Add Note</button>
     </section>
     `,
     data() {
@@ -41,15 +39,11 @@ export default {
             if (this.note.type === 'note-txt') this.note.info = { txt: this.noteContent };
             else if (this.note.type === 'note-img' || this.note.type === "note-video") this.note.info = { url: this.noteContent };
             else if (this.note.type === 'note-todos') {
-                // const todoStrings = this.noteContent.split(',');
-                // const todoItems = todoStrings.map(item => ({ txt: item }))
-                // this.note.info = {
-                //     todos: todoItems
-                // }
-                // if(!this.notes.todos || !this.note.todos.length){
-                //     const todos = [{txt:"todo", id: utilService.makeId}];
-                //     this.note.todos.info = {todos: todos}
-                // }
+                const todoStrings = this.noteContent.split(',');
+                const todoItems = todoStrings.map(item => ({ txt: item }))
+                this.note.info = {
+                    todos: todoItems
+                }
             }
         }
     },
@@ -58,7 +52,7 @@ export default {
             if (this.note.type === 'note-txt' || !this.note.type) return 'Enter Text Here';
             else if (this.note.type === 'note-img') return 'Enter Image URL Here';
             else if (this.note.type === 'note-video') return 'Enter Video URL Here';
-            else return 'Enter Todo List Items Here';
+            else return 'Enter Todo List Items Here (seperated by commas)';
         },
     }
 }
