@@ -6,15 +6,16 @@ import noteFilter from '../cmps/note-filter.cmp.js';
 export default {
   template: `
         <section class="notes-main app-main">
-            <note-filter @filter-set="setFilter"/>
-            <note-add  @note-add="addNote"/>   
-            <div class="note-lists-container" v-if="notes">
-              <h1 v-if="pinnedNotes">Pinned:</h1>
-              <note-list @note-edit="editNote" v-if="pinnedNotes.length" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
-              <h1 v-if="pinnedNotes">Others:</h1>
-              <note-list @note-edit="editNote" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
-            </div>
-            <router-view @note-edited="loadNotes"></router-view>
+          <note-filter @filter-set="setFilter"/>
+          <note-add  @note-add="addNote"/>   
+          <div class="note-lists-container" v-if="notes">
+            <h1 v-if="pinnedNotes">Pinned:</h1>
+            <note-list @note-edit="editNote" v-if="pinnedNotes.length" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="pinnedNotes"/>       
+            <h1 v-if="pinnedNotes">Others:</h1>
+            <note-list @note-edit="editNote" @note-duplicate="addNote" @note-bcg-change="setNoteBcg" @note-pin="pinNote" @note-remove="removeNote" :notes="regularNotes"/>
+          </div>
+          <router-view :isEditOn="isEditOn" @edit-exit="editOff" @note-edited="loadNotes"></router-view>
+          <div v-if="isEditOn" @click="editOff" class="screen-cover"></div>
         </section>
     `,
   components: {
@@ -25,7 +26,8 @@ export default {
   data() {
     return {
       notes: null,
-      filter: null
+      filter: null,
+      isEditOn: false
     }
   },
   created() {
@@ -76,7 +78,11 @@ export default {
         .then(() => this.loadNotes());
     },
     editNote(id){
-      this.$router.push(`/note/${id}`)
+      this.$router.push(`/note/${id}`);
+      this.isEditOn = true;
+    },
+    editOff(){
+      this.isEditOn = false;
     }
   },
   computed: {

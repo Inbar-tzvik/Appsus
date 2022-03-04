@@ -1,4 +1,3 @@
-import {utilService} from '../../../services/util-service.js'
 
 export default {
     props: ['isBodyFocus'],
@@ -14,7 +13,7 @@ export default {
             <input label="Video" name="set-type" type="radio" @input="setNoteType('note-video')" />
             <input label="Todos" name="set-type" type="radio" @input="setNoteType('note-todos')" />
         </div>
-        <button @click="onAddNote()">Add Note</button>
+        <button @click="onAddNote">Add Note</button>
     </section>
     `,
     data() {
@@ -46,9 +45,6 @@ export default {
                     todos: todoItems
                 }
             }
-        },
-        addTodo(){
-            this.note.info.todos.push({txt: this.noteContent, id: utilService.makeId()})
         }
     },
     computed: {
