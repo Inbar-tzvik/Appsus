@@ -46,6 +46,7 @@ export default {
     this.queryService();
     this.emailsOnlyInbox();
   },
+
   methods: {
     change() {
       console.log('changed');
