@@ -9,11 +9,11 @@ export default {
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <div class="main-carousel" id="carousel">
-            <div class="item"><img src="../assets/img/book.jpeg"/></div>
-            <div class="item"><img src="../assets/img/note.jpeg"/></div>
-            <div class="item"><img src="../assets/img/mail.jpeg"/></div>
-            <div class="item"><img src="../assets/img/calendar.jpeg"/></div>
-            <div class="item"><img src="../assets/img/maps.jpeg"/></div>
+            <div class="item"><img src="assets/img/book.jpeg"/></div>
+            <div class="item"><img src="assets/img/note.jpeg"/></div>
+            <div class="item"><img src="assets/img/mail.jpeg"/></div>
+            <div class="item"><img src="assets/img/calendar.jpeg"/></div>
+            <div class="item"><img src="assets/img/maps.jpeg"/></div>
          
         </div>
 </div>
