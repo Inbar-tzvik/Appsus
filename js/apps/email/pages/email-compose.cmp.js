@@ -1,5 +1,5 @@
 import { emailService } from '../services/email-service.js';
-
+import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   template: `
   <section v-if="composeEmail" class="app-main compose-email">
@@ -22,11 +22,15 @@ export default {
   },
   created() {
     this.composeEmail = emailService.getEmptyEmail();
-    console.log(this.composeEmail);
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+    //  let value = params.some_key; // "some_value"
+    console.log(params);
   },
   methods: {
     send() {
-      console.log('sent');
       emailService.save(this.composeEmail);
     },
   },
@@ -34,4 +38,15 @@ export default {
   unmounted() {
     this.composeEmail = null;
   },
+  // watch: {
+  //   $route() {
+  //     console.log(`Route was changed was modified from `);
+  //   },
+  // },
 };
+
+// const params = new Proxy(new URLSearchParams(window.location.search), {
+//   get: (searchParams, prop) => searchParams.get(prop),
+// });
+// // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+// let value = params.some_key; // "some_value"
