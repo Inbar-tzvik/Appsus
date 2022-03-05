@@ -4,7 +4,7 @@ export default {
     template: `
     <section class="note-add">
         <div class="note-content-inputs">
-            <input type="text" placeholder="Enter Label Here" v-model="note.label"/>
+            <input type="text" placeholder="Enter Title Here" v-model="note.label"/>
             <input type="text" :placeholder="noteTypeStr" v-model="noteContent"/>
         </div>
         <div class="note-type-inputs">
