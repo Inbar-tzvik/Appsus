@@ -1,11 +1,12 @@
-import noteTxt from "./note-txt.cmp.js";
+import { eventBus } from '../../../services/eventBus-service.js';
+import noteTxt from './note-txt.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteVideo from './note-video.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 
 export default {
-    props: ['note'],
-    template: `
+  props: ['note'],
+  template: `
     <div @click="isColorOptions = false" class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
          <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-trash-can"></i></button>     
          <button class="note-pin" @click="onPinNote"><i :class="isPinned"></i></button>
@@ -15,6 +16,7 @@ export default {
             <button class="duplicate-btn" @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
             <button class="color-btn" @click.stop="isColorOptions=true"><i class="fa-solid fa-palette"></i></button>
             <button class="edit-btn" @click="onEditNote"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button @click="onSendAsMail"><i class="fa-solid fa-envelope"></i></button>
             <div v-if="isColorOptions" class="color-options">
                 <button class="default-btn" @click="isColorOptions=false" @click="onSetBcg('white')"><i class="fa-solid fa-droplet-slash"></i></button>
                 <button style="background-color: #f28b82" @click="isColorOptions=false" @click="onSetBcg('#f28b82')"></button> 
@@ -32,46 +34,61 @@ export default {
         </div>
     </div>
     `,
-    components: {
-        noteTxt,
-        noteImg,
-        noteVideo,
-        noteTodos
+  components: {
+    noteTxt,
+    noteImg,
+    noteVideo,
+    noteTodos,
+  },
+  data() {
+    return {
+      isHover: false,
+      isColorOptions: false,
+    };
+  },
+  methods: {
+    onRemoveNote() {
+      this.$emit('note-remove', this.note.id);
     },
-    data() {
-        return {
-            isHover: false,
-            isColorOptions: false
-        }
+    onPinNote() {
+      this.$emit('note-pin', this.note.id);
     },
-    methods: {
-        onRemoveNote() {
-            this.$emit('note-remove', this.note.id);
-        },
-        onPinNote() {
-            this.$emit('note-pin', this.note.id)
-        },
-        onDuplicateNote() {
-            this.$emit('note-duplicate', this.note)
-        },
-        toggleHover(isHover) {
-            this.isHover = isHover
-        },
-        onSetBcg(bcg) {
-            this.$emit('note-bcg-change', { id: this.note.id, color: bcg })
-        },
-        onEditNote(){
-            this.$emit('note-edit', this.note.id)
-        }
+    onDuplicateNote() {
+      this.$emit('note-duplicate', this.note);
     },
-    computed: {
-        isPinned() {
-            if (this.note.isPinned) return 'fa-solid fa-minus';
-            else return 'fa-solid fa-thumbtack';
-        },
-        noteBcg() {
-            if (!this.note.style) return 'white';
-            else return this.note.style.bcg
-        }
-    }
-}
+    toggleHover(isHover) {
+      this.isHover = isHover;
+    },
+    onSetBcg(bcg) {
+      this.$emit('note-bcg-change', { id: this.note.id, color: bcg });
+    },
+    onEditNote() {
+      this.$emit('note-edit', this.note.id);
+    },
+    onSendAsMail() {
+      const noteLabel = this.note.label || ' ';
+      let noteContent;
+      if (this.note.type === 'note-txt') noteContent = this.note.info.txt;
+      else if (this.note.type === 'note-img' || this.note.type === 'note-video') noteContent = this.note.info.url;
+      else {
+        noteContent = '';
+        this.note.info.todos.forEach((todo) => {
+          noteContent += `${todo.txt}
+                    
+                    `;
+        });
+      }
+      this.$router.push(`/email/compose/?subject=${this.note.label}&body=${noteContent}`);
+    },
+  },
+  computed: {
+    isPinned() {
+      if (this.note.isPinned) return 'fa-solid fa-minus';
+      else return 'fa-solid fa-thumbtack';
+    },
+    noteBcg() {
+      if (!this.note.style) return 'white';
+      else return this.note.style.bcg;
+    },
+  },
+};

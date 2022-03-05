@@ -20,14 +20,13 @@ export default {
       composeEmail: null,
     };
   },
+
   created() {
     this.composeEmail = emailService.getEmptyEmail();
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-      get: (searchParams, prop) => searchParams.get(prop),
-    });
-    // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
-    //  let value = params.some_key; // "some_value"
-    console.log(params);
+    if (this.$route.query.body) {
+      this.composeEmail.subject = this.$route.query.subject;
+      this.composeEmail.body = this.$route.query.body;
+    }
   },
   methods: {
     send() {
