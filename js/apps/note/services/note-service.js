@@ -62,11 +62,11 @@ function removeNote(id){
 
 function _createNotes(){
     const notes = [];
-    notes.push(_createNote({label: 'Note', type: 'note-txt', info: {txt:'This is a note'}}, false));
+    notes.push(_createNote({label: 'Note',style: {bcg: '#e8eaed'}, type: 'note-txt', info: {txt:'This is a note'}}, false));
     notes.push(_createNote({label: 'You can change my color!',style:{bcg: '#a7ffeb'}, type: 'note-txt', info: {txt:'Try pressing the color option when you hover me!'}}, false));
-    notes.push(_createNote({label: 'You can add pictures',style:{bcg:'#e6c9a8'}, type: 'note-img', info: {url:'https://images.unsplash.com/photo-1544526226-d4568090ffb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80'}}, false));
+    notes.push(_createNote({label: 'You can add pictures', style:{bcg:'#e6c9a8'}, type: 'note-img', info: {url:'https://images.unsplash.com/photo-1544526226-d4568090ffb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80'}}, false));
     notes.push(_createNote({label: 'You can pin notes', type: 'note-txt',style:{bcg:'#f28b82'}, info: {txt:'Look at me, I\'m pinned!'}}, true));
-    notes.push(_createNote({label: 'Try all the features!',style:{bcg:'#fff475'}, type: 'note-txt', info: {txt:'You have so much more to try!'}}, false));
+    notes.push(_createNote({label: 'Try all the features!', style:{bcg:'#fff475'}, type: 'note-txt', info: {txt:'You have so much more to try!'}}, false));
     return storageService.postMany(NOTES_KEY, notes);
 }
 

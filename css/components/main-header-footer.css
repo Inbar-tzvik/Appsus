@@ -1,24 +1,76 @@
 .app-header {
   height: 4rem;
+  padding: 0 50px;
+  font-family: Roboto-bold;
+  letter-spacing: .1rem;
   background-color: var(--clrHeaderMain);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
-/* .main-header .logo {
-  font-family: inconsolata, monospace;
-  font-size: 2.14285714em;
-  color: var(--clr2);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.logo{
+  display: flex;
+  flex-direction: column;
 }
 
-.main-header .main-nav a {
-  text-transform: uppercase;
-  color: inherit;
-  text-decoration: none;
+.fa-redhat{
+  font-size: 1.5rem;
 }
 
-.main-header .main-nav a:hover {
-  color: var(--clr2);
-} */
+.logo h3{
+  margin: 0;
+}
+
+.apps-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.apps-modal {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 5px;
+  width: 200px;
+  height: 200px;
+  right: 5%;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 3px 4px 4px 5px #999898a4;
+}
+
+.apps-modal a{
+  text-align: center;
+  flex-basis: 50%;
+  padding: 5px;
+  font-size: 2.1rem;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color .2s
+}
+
+.apps-modal a:hover{
+ background-color: #dbf7ff;
+}
+
+.fa-house{
+  color:#b9bbbd
+}
+
+.fa-book{
+  color: red;
+}
+
+.gmail-logo{
+  height: 50%;
+  width: 50%;
+  object-fit: cover;
+}
