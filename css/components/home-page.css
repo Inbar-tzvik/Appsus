@@ -115,3 +115,20 @@ input:nth-of-type(5) {
 input:nth-of-type(5):checked ~ .main-carousel#carousel {
   --position: 5;
 }
+
+.home-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(226, 225, 225);
+  /* width: 100vw; */
+}
+.home-data img {
+  width: 300px;
+  height: 180px;
+}
+
+.home-page h2 {
+  color: rgb(225 255 216);
+  font-family: Roboto-bold;
+}

@@ -14,11 +14,17 @@ export default {
             <div class="item"><img src="../assets/img/mail.jpeg"/></div>
             <div class="item"><img src="../assets/img/calendar.jpeg"/></div>
             <div class="item"><img src="../assets/img/maps.jpeg"/></div>
-         <div>   
+         
         </div>
+</div>
         <div class="home-data">
-            <h2>In one place you can have everything you need</h2>
-            
+            <h2>In one place you can have it ALL</h2>
+            <h3>Appsus</h3>
+            <span>Tal Koosh</span> <span>Inbar Tzvik</span>
+
+
+
+
         </div>
 </section>
     `,
