@@ -3,6 +3,7 @@
 }
 
 .home-page h1 {
+  transform: translateX(20px);
   font-size: 30px;
   text-align: center;
   letter-spacing: 2px;
