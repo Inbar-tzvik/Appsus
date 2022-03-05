@@ -45,7 +45,6 @@
 
 div.item {
   position: absolute;
-  width: 300px;
   height: 400px;
   background-color: coral;
   --r: calc(var(--position) - var(--offset));
