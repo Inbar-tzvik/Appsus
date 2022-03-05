@@ -43,6 +43,7 @@ export default {
   methods: {
     send() {
       emailService.save(this.composeEmail);
+      this.$router.push('/email');
     },
   },
   computed: {},
