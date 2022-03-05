@@ -2,7 +2,7 @@
   height: 4rem;
   padding: 0 50px;
   font-family: Roboto-bold;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
   background-color: var(--clrHeaderMain);
   display: flex;
   justify-content: space-between;
@@ -13,16 +13,16 @@
   z-index: 1;
 }
 
-.logo{
+.logo {
   display: flex;
   flex-direction: column;
 }
 
-.fa-redhat{
+.fa-redhat {
   font-size: 1.5rem;
 }
 
-.logo h3{
+.logo h3 {
   margin: 0;
 }
 
@@ -47,30 +47,35 @@
   box-shadow: 3px 4px 4px 5px #999898a4;
 }
 
-.apps-modal a{
+.apps-modal a {
   text-align: center;
   flex-basis: 50%;
   padding: 5px;
   font-size: 2.1rem;
   border-radius: 8px;
   background-color: transparent;
-  transition: background-color .2s
+  transition: background-color 0.2s;
 }
 
-.apps-modal a:hover{
- background-color: #dbf7ff;
+.apps-modal a:hover {
+  background-color: #dbf7ff;
 }
 
-.fa-house{
-  color:#b9bbbd
+.fa-house {
+  color: #b9bbbd;
 }
 
-.fa-book{
+.fa-book {
   color: red;
 }
 
-.gmail-logo{
+.gmail-logo {
   height: 50%;
   width: 50%;
   object-fit: cover;
+}
+
+.logo a {
+  color: black;
+  text-decoration: none;
 }

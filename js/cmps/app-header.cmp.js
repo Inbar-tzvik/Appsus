@@ -1,9 +1,10 @@
 export default {
-    template: `
+  template: `
         <header class="app-header">
             <div class="logo">
             <i class="fa-brands fa-redhat"></i>                
-            <h3>Appsus</h3>
+            <router-link  to="/"> <h3>Appsus</h3></router-link>
+
             </div>
             <nav class="main-header">
                 <button @click="isActive = !isActive" class="apps-btn"><i class="fa-solid fa-grip"></i></button>
@@ -17,9 +18,9 @@ export default {
         </header>
     
     `,
-    data() {
-        return {
-            isActive: false
-        }
-    }
+  data() {
+    return {
+      isActive: false,
+    };
+  },
 };
