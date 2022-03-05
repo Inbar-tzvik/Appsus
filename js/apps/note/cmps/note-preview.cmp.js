@@ -1,12 +1,12 @@
-import {eventBus} from '../../../services/eventBus-service.js';
-import noteTxt from "./note-txt.cmp.js";
+import { eventBus } from '../../../services/eventBus-service.js';
+import noteTxt from './note-txt.cmp.js';
 import noteImg from './note-img.cmp.js';
 import noteVideo from './note-video.cmp.js';
 import noteTodos from './note-todos.cmp.js';
 
 export default {
-    props: ['note'],
-    template: `
+  props: ['note'],
+  template: `
     <div @click="isColorOptions = false" class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
          <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-trash-can"></i></button>     
          <button class="note-pin" @click="onPinNote"><i :class="isPinned"></i></button>
@@ -34,60 +34,60 @@ export default {
         </div>
     </div>
     `,
-    components: {
-        noteTxt,
-        noteImg,
-        noteVideo,
-        noteTodos
+  components: {
+    noteTxt,
+    noteImg,
+    noteVideo,
+    noteTodos,
+  },
+  data() {
+    return {
+      isHover: false,
+      isColorOptions: false,
+    };
+  },
+  methods: {
+    onRemoveNote() {
+      this.$emit('note-remove', this.note.id);
     },
-    data() {
-        return {
-            isHover: false,
-            isColorOptions: false
-        }
+    onPinNote() {
+      this.$emit('note-pin', this.note.id);
     },
-    methods: {
-        onRemoveNote() {
-            this.$emit('note-remove', this.note.id);
-        },
-        onPinNote() {
-            this.$emit('note-pin', this.note.id)
-        },
-        onDuplicateNote() {
-            this.$emit('note-duplicate', this.note)
-        },
-        toggleHover(isHover) {
-            this.isHover = isHover
-        },
-        onSetBcg(bcg) {
-            this.$emit('note-bcg-change', { id: this.note.id, color: bcg })
-        },
-        onEditNote(){
-            this.$emit('note-edit', this.note.id)
-        },
-        onSendAsMail(){
-            const noteLabel = this.note.label || ' ';
-            let noteContent; 
-            if(this.note.type === 'note-txt') noteContent = this.note.info.txt; 
-            else if(this.note.type === 'note-img' || this.note.type === 'note-video') noteContent = this.note.info.url;
-            else {
-                noteContent = ''; 
-                for(var i = 0; i < note.info.todos.length; i++){
-                    noteContent += `${i+1}. ${note.info.todos[i].txt}
+    onDuplicateNote() {
+      this.$emit('note-duplicate', this.note);
+    },
+    toggleHover(isHover) {
+      this.isHover = isHover;
+    },
+    onSetBcg(bcg) {
+      this.$emit('note-bcg-change', { id: this.note.id, color: bcg });
+    },
+    onEditNote() {
+      this.$emit('note-edit', this.note.id);
+    },
+    onSendAsMail() {
+      const noteLabel = this.note.label || ' ';
+      let noteContent;
+      if (this.note.type === 'note-txt') noteContent = this.note.info.txt;
+      else if (this.note.type === 'note-img' || this.note.type === 'note-video') noteContent = this.note.info.url;
+      else {
+        noteContent = '';
+        this.note.info.todos.forEach((todo) => {
+          noteContent += `${todo.txt}
 `;
-                }
-            }
-            this.$router.push(`/email/compose?subject=${this.note.label}&body=${noteContent}`)
-        }
+        });
+      }
+      this.$router.push(`/email/compose/?subject=${this.note.label}&body=${noteContent}`);
     },
-    computed: {
-        isPinned() {
-            if (this.note.isPinned) return 'fa-solid fa-minus';
-            else return 'fa-solid fa-thumbtack';
-        },
-        noteBcg() {
-            if (!this.note.style) return 'white';
-            else return this.note.style.bcg
-        }
-    }
-}
+  },
+  computed: {
+    isPinned() {
+      if (this.note.isPinned) return 'fa-solid fa-minus';
+      else return 'fa-solid fa-thumbtack';
+    },
+    noteBcg() {
+      if (!this.note.style) return 'white';
+      else return this.note.style.bcg;
+    },
+  },
+};

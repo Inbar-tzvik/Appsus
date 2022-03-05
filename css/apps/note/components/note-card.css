@@ -41,7 +41,6 @@
     color: red;
 }
 
-
 .note-pin {
     padding: 10px 10px;
     font-size: 1.5rem;
@@ -73,8 +72,12 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-
 }
+
+.note-card-content h3{
+    font-family: Roboto-bold
+}
+
 
 .note-preview-edit {
     display: flex;
