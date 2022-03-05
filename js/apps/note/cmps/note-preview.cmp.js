@@ -72,11 +72,10 @@ export default {
             else if(this.note.type === 'note-img' || this.note.type === 'note-video') noteContent = this.note.info.url;
             else {
                 noteContent = ''; 
-                this.note.info.todos.forEach(todo => {
-                    noteContent += `${todo.txt}
-                    
-                    `
-                })
+                for(var i = 0; i < note.info.todos.length; i++){
+                    noteContent += `${i+1}. ${note.info.todos[i].txt}
+`;
+                }
             }
             this.$router.push(`/email/compose?subject=${this.note.label}&body=${noteContent}`)
         }
