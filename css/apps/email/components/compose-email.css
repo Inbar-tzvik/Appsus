@@ -26,7 +26,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
 }
 
 .compose-email h4 {
@@ -65,4 +64,10 @@
 
 .compose-email h4 a {
   color: white;
+}
+
+.compose-email img {
+  height: 400px;
+  width: 300px;
+  margin: 0 auto;
 }
