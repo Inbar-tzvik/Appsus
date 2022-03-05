@@ -1,5 +1,6 @@
 .home-page {
   font-family: Roboto;
+  height: 100%;
 }
 
 .home-page h1 {
@@ -59,18 +60,22 @@ div.item:nth-of-type(1) {
   --offset: 1;
   background-color: #90f1ef;
 }
+
 div.item:nth-of-type(2) {
   --offset: 2;
   background-color: #ff70a6;
 }
+
 div.item:nth-of-type(3) {
   --offset: 3;
   background-color: #ff9770;
 }
+
 div.item:nth-of-type(4) {
   --offset: 4;
   background-color: #ffd670;
 }
+
 div.item:nth-of-type(5) {
   --offset: 5;
   background-color: #e9ff70;
@@ -80,7 +85,8 @@ input:nth-of-type(1) {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
-input:nth-of-type(1):checked ~ .main-carousel#carousel {
+
+input:nth-of-type(1):checked~.main-carousel#carousel {
   --position: 1;
 }
 
@@ -88,7 +94,8 @@ input:nth-of-type(2) {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
 }
-input:nth-of-type(2):checked ~ .main-carousel#carousel {
+
+input:nth-of-type(2):checked~.main-carousel#carousel {
   --position: 2;
 }
 
@@ -96,7 +103,8 @@ input:nth-of-type(3) {
   grid-column: 4 /5;
   grid-row: 2 / 3;
 }
-input:nth-of-type(3):checked ~ .main-carousel#carousel {
+
+input:nth-of-type(3):checked~.main-carousel#carousel {
   --position: 3;
 }
 
@@ -104,7 +112,8 @@ input:nth-of-type(4) {
   grid-column: 5 / 6;
   grid-row: 2 / 3;
 }
-input:nth-of-type(4):checked ~ .main-carousel#carousel {
+
+input:nth-of-type(4):checked~.main-carousel#carousel {
   --position: 4;
 }
 
@@ -112,23 +121,50 @@ input:nth-of-type(5) {
   grid-column: 6 / 7;
   grid-row: 2 / 3;
 }
-input:nth-of-type(5):checked ~ .main-carousel#carousel {
+
+input:nth-of-type(5):checked~.main-carousel#carousel {
   --position: 5;
 }
 
-.home-data {
+.home-page h2 {
+  color: rgb(141, 141, 141);
+  font-family: Roboto-bold;
+}
+
+.home-footer {
+  height: 210px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(226, 225, 225);
-  /* width: 100vw; */
-}
-.home-data img {
-  width: 300px;
-  height: 180px;
+  justify-content: center;
+  background-color: rgb(224, 224, 224);
 }
 
-.home-page h2 {
-  color: rgb(225 255 216);
-  font-family: Roboto-bold;
+.footer-logo{
+  font-size: 1.5rem;
+}
+
+.social-links {
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+}
+
+.social-links div {
+    
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-links div a{
+  color: black;
+  font-size: 3rem;
+}
+
+.social-links div a:hover{
+  color: red;
 }
