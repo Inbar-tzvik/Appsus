@@ -74,8 +74,7 @@ export default {
         noteContent = '';
         this.note.info.todos.forEach((todo) => {
           noteContent += `${todo.txt}
-                    
-                    `;
+`;
         });
       }
       this.$router.push(`/email/compose/?subject=${this.note.label}&body=${noteContent}`);

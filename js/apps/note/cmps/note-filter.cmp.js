@@ -1,7 +1,7 @@
 export default {
   template: `
         <section class="note-filter">
-            <input type="text" v-model="text" @input="onSetTextFilter">
+            <input type="text" v-model="text" placeholder="Filter notes" @input="onSetTextFilter">
             <div class="filter-type-inputs">
               <input id="txt" name="set-type" type="radio" @input="onSetFilter('note-txt')" >
               <label for="txt"><i class="fa-solid fa-t"></i></label>
