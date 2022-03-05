@@ -120,6 +120,12 @@
     z-index: 1;
 }
 
+.default-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .color-options button {
     width: 30px;
     height: 30px;
