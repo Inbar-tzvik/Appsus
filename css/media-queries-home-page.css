@@ -1,2 +1,37 @@
 @media (max-width: 1100px) {
+  .home-page img {
+    border-radius: 8px;
+    height: 250px;
+    width: 300px;
+    box-shadow: 3px 5px 5px 7px #ffffffa4;
+  }
+  .main-carousel#carousel {
+    perspective: 400px;
+  }
+
+  div.item {
+    height: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-page img {
+    height: 200px;
+    width: 150px;
+  }
+  div.item {
+    transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-100px * var(--r)));
+    height: 150px;
+  }
+}
+
+@media (max-width: 850px) {
+  .home-page img {
+    height: 250px;
+    width: 200px;
+  }
+  div.item {
+    transform: rotateY(calc(-10deg * var(--r))) translateX(calc(-200px * var(--r)));
+    height: 200px;
+  }
 }

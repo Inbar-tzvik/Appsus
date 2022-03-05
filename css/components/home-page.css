@@ -13,7 +13,7 @@
   height: 600px;
   margin: 0;
   display: grid;
-  grid-template-rows: 500px 100px;
+  grid-template-rows: 400px 100px;
   grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
   align-items: center;
   justify-items: center;
@@ -47,7 +47,7 @@
 div.item {
   position: absolute;
   height: 400px;
-  background-color: coral;
+  /* background-color: coral; */
   --r: calc(var(--position) - var(--offset));
   --abs: max(calc(var(--r) * -1), var(--r));
   transition: all 0.25s linear;
@@ -57,23 +57,23 @@ div.item {
 
 div.item:nth-of-type(1) {
   --offset: 1;
-  background-color: #90f1ef;
+  /* background-color: #90f1ef; */
 }
 div.item:nth-of-type(2) {
   --offset: 2;
-  background-color: #ff70a6;
+  /* background-color: #ff70a6; */
 }
 div.item:nth-of-type(3) {
   --offset: 3;
-  background-color: #ff9770;
+  /* background-color: #ff9770; */
 }
 div.item:nth-of-type(4) {
   --offset: 4;
-  background-color: #ffd670;
+  /* background-color: #ffd670; */
 }
 div.item:nth-of-type(5) {
   --offset: 5;
-  background-color: #e9ff70;
+  /* background-color: #e9ff70; */
 }
 
 input:nth-of-type(1) {
