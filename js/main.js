@@ -16,10 +16,3 @@ const options = {
 const app = Vue.createApp(options);
 app.use(router);
 app.mount('#app');
-
-{
-  /* <app-header />
-<user-msg />
-<router-view />
-<app-footer /> */
-}
