@@ -8,10 +8,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     transform: translate(-50%, -50%);
     background-color: white;
-    box-shadow: 0 0 15px 2px;
+    box-shadow: 0 0 10px 2px #525252;
     z-index: 1;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .note-edit-todo{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #b4b4b4;
     margin-bottom: 20px;
 }
 
@@ -75,6 +75,6 @@
     width: 100vw;
     height: 100vh;
     background-color: #202124;
-    position: absolute;
+    position: fixed;
     opacity: 0.5;
 }

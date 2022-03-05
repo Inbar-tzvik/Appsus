@@ -9,18 +9,25 @@ export default {
     <div @click="isColorOptions = false" class="note-card-content" :class="{'card-hover': isHover}" :style="{backgroundColor: noteBcg}" @mouseover="toggleHover(true)" @mouseleave="toggleHover(false)">
          <button class="note-delete" @click="onRemoveNote"><i class="fa-solid fa-trash-can"></i></button>     
          <button class="note-pin" @click="onPinNote"><i :class="isPinned"></i></button>
-        <h3>{{note.label}}</h3>
+        <h3 class="note-label">{{note.label}}</h3>
         <component :is="note.type" :info="note.info"/>
         <div class="note-preview-edit">
-            <button @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
-            <button @click.stop="isColorOptions=true"><i class="fa-solid fa-palette"></i></button>
-            <button @click="onEditNote"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="duplicate-btn" @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
+            <button class="color-btn" @click.stop="isColorOptions=true"><i class="fa-solid fa-palette"></i></button>
+            <button class="edit-btn" @click="onEditNote"><i class="fa-solid fa-pen-to-square"></i></button>
             <div v-if="isColorOptions" class="color-options">
                 <button class="default-btn" @click="isColorOptions=false" @click="onSetBcg('white')"><i class="fa-solid fa-droplet-slash"></i></button>
-                <button class="red-btn" @click="isColorOptions=false" @click="onSetBcg('red')"></button> 
-                <button class="blue-btn" @click="isColorOptions=false" @click="onSetBcg('blue')"></button> 
-                <button class="grey-btn" @click="isColorOptions=false" @click="onSetBcg('grey')"></button> 
-                <button class="aqua-btn" @click="isColorOptions=false" @click="onSetBcg('aqua')"></button> 
+                <button style="background-color: #f28b82" @click="isColorOptions=false" @click="onSetBcg('#f28b82')"></button> 
+                <button style="background-color: #fbbc04" @click="isColorOptions=false" @click="onSetBcg('#fbbc04')"></button> 
+                <button style="background-color: #fff475" @click="isColorOptions=false" @click="onSetBcg('#fff475')"></button> 
+                <button style="background-color: #ccff90" @click="isColorOptions=false" @click="onSetBcg('#ccff90')"></button> 
+                <button style="background-color: #a7ffeb" @click="isColorOptions=false" @click="onSetBcg('#a7ffeb')"></button> 
+                <button style="background-color: #cbf0f8" @click="isColorOptions=false" @click="onSetBcg('#cbf0f8')"></button> 
+                <button style="background-color: #aecbfa" @click="isColorOptions=false" @click="onSetBcg('#aecbfa')"></button> 
+                <button style="background-color: #d7aefb" @click="isColorOptions=false" @click="onSetBcg('#d7aefb')"></button> 
+                <button style="background-color: #fdcfe8" @click="isColorOptions=false" @click="onSetBcg('#fdcfe8')"></button> 
+                <button style="background-color: #e6c9a8" @click="isColorOptions=false" @click="onSetBcg('#e6c9a8')"></button> 
+                <button style="background-color: #e8eaed" @click="isColorOptions=false" @click="onSetBcg('#e8eaed')"></button>  
             </div>
         </div>
     </div>
