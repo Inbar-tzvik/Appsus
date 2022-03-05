@@ -1,3 +1,4 @@
+import {eventBus} from '../../../services/eventBus-service.js';
 import noteTxt from "./note-txt.cmp.js";
 import noteImg from './note-img.cmp.js';
 import noteVideo from './note-video.cmp.js';
@@ -15,6 +16,7 @@ export default {
             <button class="duplicate-btn" @click="onDuplicateNote"><i class="fa-solid fa-clone"></i></button>
             <button class="color-btn" @click.stop="isColorOptions=true"><i class="fa-solid fa-palette"></i></button>
             <button class="edit-btn" @click="onEditNote"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button @click="onSendAsMail"><i class="fa-solid fa-envelope"></i></button>
             <div v-if="isColorOptions" class="color-options">
                 <button class="default-btn" @click="isColorOptions=false" @click="onSetBcg('white')"><i class="fa-solid fa-droplet-slash"></i></button>
                 <button style="background-color: #f28b82" @click="isColorOptions=false" @click="onSetBcg('#f28b82')"></button> 
@@ -62,6 +64,21 @@ export default {
         },
         onEditNote(){
             this.$emit('note-edit', this.note.id)
+        },
+        onSendAsMail(){
+            const noteLabel = this.note.label || ' ';
+            let noteContent; 
+            if(this.note.type === 'note-txt') noteContent = this.note.info.txt; 
+            else if(this.note.type === 'note-img' || this.note.type === 'note-video') noteContent = this.note.info.url;
+            else {
+                noteContent = ''; 
+                this.note.info.todos.forEach(todo => {
+                    noteContent += `${todo.txt}
+                    
+                    `
+                })
+            }
+            this.$router.push(`/email/compose?subject=${this.note.label}&body=${noteContent}`)
         }
     },
     computed: {
