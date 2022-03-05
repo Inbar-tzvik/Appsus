@@ -13,9 +13,9 @@ export default {
           <!-- <section  @mouseleave="hideButtons" @mouseover="showButtons"> -->
             <span class="date-remove" v-if="!buttons" v-bind:class="{'email-data':!email.isRead }">{{dateCalc}} </span>
             <div class="date-remove"v-if="buttons">
-                <span @click="remove(email.id)"> <i class="fa-solid fa-trash"></i></span> 
-                <span @click="updateReadState" v-if="email.isRead" ><i class="fa fa-envelope"></i></span>
-                <span @click="updateReadState" v-if="!email.isRead" ><i class="fa-solid fa-envelope-open"></i></span>
+                <span class="delete" data-hover="Delete" @click="remove(email.id)"> <i class="fa-solid fa-trash"></i></span> 
+                <span class="unread" data-hover="Mark as unread" @click="updateReadState" v-if="email.isRead" ><i class="fa fa-envelope"></i></span>
+                <span class="read" data-hover="Mark as read" @click="updateReadState" v-if="!email.isRead" ><i class="fa-solid fa-envelope-open"></i></span>
             <div>
           </section>
 <!-- </section> -->
@@ -49,6 +49,7 @@ export default {
     updateReadState() {
       this.email.isRead = !this.email.isRead;
       emailService.update(this.email);
+      this.$emit('changeState');
     },
   },
   computed: {

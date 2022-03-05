@@ -6,13 +6,13 @@ import emailFilter from '../cmps/email-filter.cmp.js';
 import emailDetails from './email-details.cmp.js';
 export default {
   template: `
-  <section >
+  <section  class="email-main-page">
     <email-filter @filteredTxtRead="setFilterTxtRead" />
     <section class="email-main-layout">
-    <email-menu  :mailOpen="isMailToShow" class="email-menu" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
+    <email-menu  :mailOpen="isMailToShow" class="email-menu" :emailsOnlyInbox="emailsInbox" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
   <!-- <section class="email-app app-main"> -->
-    <email-list v-if="!isMailToShow" :emails="emailsForDisplay" @show="show"  @remove="removeEmail"/>
-    <router-view v-if="isMailToShow" :emailId="idToShow"  @edit-exit="editOff" ></router-view>
+    <email-list v-if="!isMailToShow" :emails="emailsForDisplay" @show="show"  @remove="removeEmail" @changeState="change"/>
+    <router-view  v-if="isMailToShow" :emailId="idToShow"  @edit-exit="editOff" ></router-view>
 
     <!-- <email-details>  -->
 <!-- </section> -->
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       emails: null,
+      emailsInbox: null,
       filterBy: {
         status: 'inbox',
         txt: '', // no need to support complex text search
@@ -42,36 +43,54 @@ export default {
     };
   },
   created() {
-    emailService.query(this.filterBy).then((emails) => (this.emails = emails));
+    this.queryService();
+    this.emailsOnlyInbox();
   },
   methods: {
+    change() {
+      console.log('changed');
+      this.emailsOnlyInbox();
+    },
     show(id) {
       this.isMailToShow = true;
       this.idToShow = id;
       this.$router.push(`/email/${id}`);
-
-      console.log(this.idToShow);
+      this.queryService();
+      this.emailsOnlyInbox();
+      console.log(this.emails);
     },
     setFilterStatus(filterStat) {
       this.isMailToShow = false;
       this.$router.push(`/email`);
-
-      console.log(this.isMailToShow);
       this.filterBy.status = filterStat;
-      emailService.query(this.filterBy).then((emails) => (this.emails = emails));
+      this.queryService();
+      this.emailsOnlyInbox();
     },
     setFilterTxtRead(filter) {
       this.filterBy.txt = filter.txt;
       this.filterBy.isReadnow = filter.isRead;
+      this.queryService();
+      this.emailsOnlyInbox();
+    },
+    queryService() {
       emailService.query(this.filterBy).then((emails) => (this.emails = emails));
     },
-
+    emailsOnlyInbox() {
+      emailService
+        .query({
+          status: 'inbox',
+          txt: '',
+          isReadnow: '1',
+        })
+        .then((emails) => (this.emailsInbox = emails));
+    },
     removeEmail(id) {
       emailService
         .remove(id)
         .then(() => {
           const idx = this.emails.findIndex((email) => email.id === id);
           this.emails.splice(idx, 1);
+
           // eventBus.emit('show-msg', { txt: 'Deleted succesfully', type: 'success' });
         })
         .catch((err) => {
@@ -86,6 +105,15 @@ export default {
       // if (!this.filterBy)
       // const regex = new RegExp(this.filterBy.vendor, 'i');
       // return this.cars.filter((car) => regex.test(car.vendor));
+    },
+  },
+  watch: {
+    '$route.params.emailId': {
+      handler() {
+        console.log('helloooooo');
+        this.queryService();
+      },
+      immediate: true,
     },
   },
 };

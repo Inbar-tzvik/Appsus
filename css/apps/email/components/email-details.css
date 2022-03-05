@@ -1,8 +1,16 @@
 .email-details {
   font-family: Roboto;
-  margin-top: 40px;
+  margin-top: 35px; /* padding-right: 100px; */
   margin-left: 50px;
-  max-width: 800px;
+  min-width: 600px;
+  display: inline-block;
+
+  /* max-width: 750px; */
+  /* margin: auto; */
+}
+.email-details p {
+  /* text-align: center; */
+  max-width: 440px;
 }
 
 .fa-user {
@@ -26,4 +34,19 @@
   margin-right: 15px;
   font-size: 12px;
   margin-left: auto;
+}
+.fa-trash,
+.fa-print,
+.fa-up-right-from-square {
+  opacity: 0.5;
+}
+
+.fa-print {
+  margin-right: 8px;
+}
+
+.subject {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

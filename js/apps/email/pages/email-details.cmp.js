@@ -3,8 +3,10 @@ import { emailService } from '../services/email-service.js';
 export default {
   props: ['emailId'],
   template: `
-        <section v-if="email" class="email-details app-main">
-            <h2>{{email.subject}}</h2>
+        <section v-if="email" class="email-details app-main" >
+            <div class="subject"><h2>{{email.subject}} </h2><span><i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-print"></i> <i class="fa-solid fa-up-right-from-square"></i>
+            </span></div>
             <div class="data-head"> 
                 <i class="fa fa-user"></i>
                  {{email.from.name}} 
@@ -29,7 +31,6 @@ export default {
       this.email = email;
       this.email.isRead = true;
       emailService.update(this.email);
-      console.log(email);
     });
   },
   computed: {
