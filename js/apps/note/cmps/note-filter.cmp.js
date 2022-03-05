@@ -3,14 +3,14 @@ export default {
         <section class="note-filter">
             <input type="text" v-model="text" @input="onSetTextFilter">
             <div class="filter-type-inputs">
-              <!-- <button @click="onSetFilter('note-txt')">text</button>
-              <button @click="onSetFilter('note-img')">image</button>
-              <button @click="onSetFilter('note-video')">video</button>
-              <button @click="onSetFilter('note-todos')">todo</button> -->
-              <input label="Text" name="set-type" type="radio" @input="onSetFilter('note-txt')" >
-              <input label="Image" name="set-type" type="radio" @input="onSetFilter('note-img')" >
-              <input label="Video" name="set-type" type="radio" @input="onSetFilter('note-video')" >
-              <input label="Todos" name="set-type" type="radio" @input="onSetFilter('note-todos')" >
+              <input id="txt" name="set-type" type="radio" @input="onSetFilter('note-txt')" >
+              <label for="txt"><i class="fa-solid fa-t"></i></label>
+              <input id="img" name="set-type" type="radio" @input="onSetFilter('note-img')" >
+              <label for="img"><i class="fa-solid fa-image"></i></label>
+              <input id="video" name="set-type" type="radio" @input="onSetFilter('note-video')" >
+              <label for="video"><i class="fa-solid fa-video"></i></label>
+              <input id="todos" name="set-type" type="radio" @input="onSetFilter('note-todos')" >
+              <label for="todos"><i class="fa-solid fa-list-ul"></i></label>
             </div>
         </section>
     `,
@@ -35,6 +35,9 @@ export default {
     sendFilter() {
       this.$emit('filter-set', this.filter)
     }
+  },
+  computed: {
+    
   }
 
 }

@@ -8,10 +8,14 @@ export default {
             <input type="text" :placeholder="noteTypeStr" v-model="noteContent"/>
         </div>
         <div class="note-type-inputs">
-            <input label="Text"  name="set-type" type="radio" @input="setNoteType('note-txt')" />
-            <input label="Image" name="set-type" type="radio" @input="setNoteType('note-img')" />
-            <input label="Video" name="set-type" type="radio" @input="setNoteType('note-video')" />
-            <input label="Todos" name="set-type" type="radio" @input="setNoteType('note-todos')" />
+            <input id="add-txt"  name="add-set-type" type="radio" @input="setNoteType('note-txt')" />
+            <label for="add-txt"><i class="fa-solid fa-t"></i></label>
+            <input id="add-img" name="add-set-type" type="radio" @input="setNoteType('note-img')" />
+            <label for="add-img"><i class="fa-solid fa-image"></i></label>
+            <input id="add-video" name="add-set-type" type="radio" @input="setNoteType('note-video')" />
+            <label for="add-video"><i class="fa-solid fa-video"></i></label>
+            <input id="add-todos" name="add-set-type" type="radio" @input="setNoteType('note-todos')" />
+            <label for="add-todos"><i class="fa-solid fa-list-ul"></i></label>
         </div>
         <button @click="onAddNote">Add Note</button>
     </section>

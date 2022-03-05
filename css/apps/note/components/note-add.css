@@ -1,6 +1,6 @@
 .note-add {
     margin: auto;
-    width: 50%;
+    width: fit-content;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -12,11 +12,12 @@
 
 
 .note-content-inputs {
+  width: 1000px;
     text-align: center;
 }
 
 .note-content-inputs input {
-    width: 800px;
+    width: 100%;
     height: 70px;
     padding: 15px;
     font-size: 1.2rem;
@@ -24,45 +25,32 @@
     border: none;
     outline: none;
 }
-
-.note-type-inputs {
-    background: #454857;
-    padding: 4px;
-    border-radius: 3px;
-    box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
-        0 0 0 3px rgba(185, 185, 185, 0.3);
-    position: relative;
+.note-type-inputs{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    gap: 20px;
 }
 
-.note-type-inputs input {
-    width: auto;
-    height: 100%;
-    appearance: none;
-    outline: none;
+.note-type-inputs label{
     cursor: pointer;
-    border-radius: 2px;
-    padding: 4px 8px;
-    background: #454857;
-    color: #bdbdbdbd;
-    font-size: 14px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    transition: all 100ms linear;
 }
 
-.note-type-inputs input:checked {
-    background-image: linear-gradient(180deg, #95d891, #74bbad);
-    color: #fff;
-    box-shadow: 0 1px 1px #0000002e;
-    text-shadow: 0 1px 0px #79485f7a;
+.note-type-inputs input:not(:checked)+label{
+    opacity: 0.2;
+    transition: opacity .3s;
+    transform: scale(1);
 }
 
-.note-type-inputs input:before {
-    content: attr(label);
-    display: inline-block;
-    text-align: center;
-    width: 100%;
+.note-type-inputs input:checked+label{
+    opacity: 1;
+    transform: scale(1.3);
+    transition: transform .3s;
+}
+
+.note-type-inputs input{
+    display: none;
 }
 
 .note-add button {

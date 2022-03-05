@@ -1,9 +1,12 @@
 .note-lists-container{
     flex-grow: 1;
+    padding: 30px;
+
 }
 
 .notes-list{
-    margin: 50px auto 0;
-    columns: 5;
-    column-gap: 80px;
+    margin: 10px auto 0;
+    columns: 300px;
+    display: inline-block;
+    text-align: center;
 }
