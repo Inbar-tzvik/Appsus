@@ -1,5 +1,4 @@
 import { emailService } from '../services/email-service.js';
-import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   template: `
   <section v-if="composeEmail" class="app-main compose-email">
@@ -7,7 +6,10 @@ export default {
   <form @submit.prevent="send" >
       <input type="email" v-model="composeEmail.to" placeholder="To">
       <input type="text" v-model="composeEmail.subject" placeholder="Subject">
-      <textarea type="text" v-model="composeEmail.body" placeholder="Body"></textarea>
+      <textarea type="text" v-model="composeEmail.body" placeholder="Body">
+        </textarea>
+        <img v-if="image" :src="getUrl"/>
+
       <button> Send </button>
   </form>
   <br>
@@ -18,6 +20,8 @@ export default {
   data() {
     return {
       composeEmail: null,
+      image: false,
+      getUrl: false,
     };
   },
 
@@ -25,7 +29,15 @@ export default {
     this.composeEmail = emailService.getEmptyEmail();
     if (this.$route.query.body) {
       this.composeEmail.subject = this.$route.query.subject;
-      this.composeEmail.body = this.$route.query.body;
+      if (this.$route.query.body.startsWith('https')) {
+        console.log('https');
+        this.image = true;
+        this.getUrl = this.$route.query.body;
+        // this.$refs.img.src() = 'this.$route.query.body';
+      } else {
+        this.image = false;
+        this.composeEmail.body = this.$route.query.body;
+      }
     }
   },
   methods: {
