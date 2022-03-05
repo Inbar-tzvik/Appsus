@@ -214,7 +214,10 @@
   left: 110%;
   bottom: 10%;
 }
+.menu-button {
+  display: none;
+}
 
 .email-main-page {
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
 }

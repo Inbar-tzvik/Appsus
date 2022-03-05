@@ -9,7 +9,8 @@ export default {
   <section  class="email-main-page">
     <email-filter @filteredTxtRead="setFilterTxtRead" />
     <section class="email-main-layout">
-    <email-menu  :mailOpen="isMailToShow" class="email-menu" :emailsOnlyInbox="emailsInbox" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
+    <button @click="isMenu=true" class="menu-button"><i class="fa-solid fa-bars"></i></button>
+    <email-menu @closeMenu="isMenu=false" :isMenu="isMenu" :mailOpen="isMailToShow" class="email-menu" :emailsOnlyInbox="emailsInbox" :emails="emailsForDisplay" @filtered="setFilterStatus"/>
   <!-- <section class="email-app app-main"> -->
     <email-list v-if="!isMailToShow" :emails="emailsForDisplay" @show="show"  @remove="removeEmail" @changeState="change"/>
     <router-view  v-if="isMailToShow" :emailId="idToShow"  @edit-exit="editOff" ></router-view>
@@ -40,6 +41,7 @@ export default {
       },
       isMailToShow: false,
       idToShow: null,
+      isMenu: false,
     };
   },
   created() {

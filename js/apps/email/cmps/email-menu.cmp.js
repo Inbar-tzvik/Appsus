@@ -1,7 +1,9 @@
 export default {
-  props: ['emails', 'emailsOnlyInbox'],
+  props: ['emails', 'emailsOnlyInbox', 'isMenu'],
   template: `
-          <section class="email-menu">
+
+          <section class="email-menu" :class="{'menu-open':isMenu}">
+            <button v-if="isMenu" @click="menuClose">X</button>
           <div @click="compose">
             <i class="fa-solid fa-plus fa-2x">
 
@@ -22,6 +24,9 @@ export default {
   },
   created() {},
   methods: {
+    menuClose() {
+      this.$emit('closeMenu');
+    },
     compose() {
       this.$router.push(`/email/compose`);
     },

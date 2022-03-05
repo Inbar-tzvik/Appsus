@@ -2,3 +2,5 @@
 @import 'components/email-filter.css';
 @import 'components/email-details.css';
 @import 'components/compose-email.css';
+
+@import 'email-media-queries.css';

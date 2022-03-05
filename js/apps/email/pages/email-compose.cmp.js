@@ -10,6 +10,7 @@ export default {
       <textarea type="text" v-model="composeEmail.body" placeholder="Body"></textarea>
       <button> Send </button>
   </form>
+  <br>
   <router-link to="/email">Back to emails</router-link>
 
 </section>

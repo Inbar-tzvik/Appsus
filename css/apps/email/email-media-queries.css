@@ -1,0 +1,95 @@
+@media (max-width: 800px) {
+  .email-menu {
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    height: 100vh;
+    top: 4.5rem;
+    width: 160px;
+    left: -100%;
+    transition: left 0.3s;
+    /* opacity: 0; */
+  }
+  .menu-button {
+    top: 5rem;
+    display: block;
+    border: none;
+    background-color: transparent;
+    font-size: 1.3rem;
+    margin-left: 20px;
+    position: fixed;
+    left: 0;
+  }
+  .email-menu.menu-open {
+    left: 0;
+  }
+  .email-main-layout {
+    justify-content: center;
+  }
+  .email-list {
+    width: 100%;
+  }
+  .email-read,
+  .email-all {
+    flex-direction: column;
+  }
+  .email-preview-row {
+    height: 110px;
+    font-size: 12px;
+    /* flex-direction: column;
+    gap: 0; */
+  }
+  .sendfrom {
+    flex: 0 0 30px;
+  }
+  .mail-content {
+    /* flex-basis: 500px; */
+    overflow: visible;
+    text-overflow: ellipsis;
+    height: 2rem;
+    white-space: normal;
+    margin-bottom: 10px;
+  }
+  .email-menu button {
+    border: 0;
+    background-color: transparent;
+    color: tomato;
+    margin-bottom: 10px;
+  }
+  .email-main-layout {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 420px) {
+  .search {
+    max-width: 240px;
+  }
+  .search select {
+    max-width: 50px;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 660px) {
+  .subject {
+    max-width: 400px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .data-head {
+    max-width: 400px;
+    text-align: center;
+  }
+  .email-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+
+  .email-details p {
+    max-width: 250px;
+    line-height: 1.7rem;
+  }
+}
