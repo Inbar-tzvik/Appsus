@@ -26,7 +26,7 @@ const emails = [
   },
   {
     id: 'e103',
-    subject: 'Khole is prego again!',
+    subject: 'Khloe is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: true,
     sentAt: 1551234564,
@@ -53,13 +53,14 @@ const emails = [
   },
   {
     id: 'e106',
-    subject: 'Khole is prego again!',
+    subject: 'Khloe is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: true,
     sentAt: 1551234564,
     to: 'user@appsus.com',
     from: { name: 'Kyile J', email: 'kyile.j@gmail.com' },
   },
+
   {
     id: 'e107',
     subject: 'Kourt is engaged!!!!!',
@@ -71,7 +72,7 @@ const emails = [
   },
   {
     id: 'e108',
-    subject: 'Khole is prego again!',
+    subject: 'Khloe is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: false,
     sentAt: 1551234564,
@@ -89,7 +90,7 @@ const emails = [
   },
   {
     id: 'e110',
-    subject: 'Khole is prego again!',
+    subject: 'Khloe is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: false,
     sentAt: 1551234564,
@@ -98,9 +99,39 @@ const emails = [
   },
   {
     id: 'e111',
-    subject: 'Khole is prego again!',
+    subject: 'Khloe is prego again!',
     body: 'How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0',
     isRead: false,
+    sentAt: 1551234564,
+    to: 'user@appsus.com',
+    from: { name: 'Kyile J', email: 'kyile.j@gmail.com' },
+  },
+  {
+    id: 'e112',
+    subject: 'This is the third sprint!!!!!!!',
+    body: `How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0
+  How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0`,
+    isRead: false,
+    sentAt: 1551234564,
+    to: 'user@appsus.com',
+    from: { name: 'Kyile J', email: 'kyile.j@gmail.com' },
+  },
+  {
+    id: 'e113',
+    subject: 'This is the omg sprint!!!!!!!',
+    body: `How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0
+  How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0`,
+    isRead: true,
+    sentAt: 1551234564,
+    to: 'user@appsus.com',
+    from: { name: 'Kyile J', email: 'kyile.j@gmail.com' },
+  },
+  {
+    id: 'e114',
+    subject: `It's not a sprint is super sprint!!!!!!!`,
+    body: `How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0
+  How are you doing?Would love to catch up sometimes i think we can talk about a lot of things. and also if you like we can go grab a salad sometime.love you x0x0`,
+    isRead: true,
     sentAt: 1551234564,
     to: 'user@appsus.com',
     from: { name: 'Kyile J', email: 'kyile.j@gmail.com' },
