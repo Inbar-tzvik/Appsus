@@ -43,11 +43,11 @@
   background-color: #f1f3f4;
 }
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
   width: 70%;
-}
+} */
 
 .email-preview-row {
   font-family: Roboto;
